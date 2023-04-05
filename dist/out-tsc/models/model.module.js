@@ -6,24 +6,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var platform_browser_1 = require("@angular/platform-browser");
 var core_1 = require("@angular/core");
-var forms_1 = require("@angular/forms");
-var http_1 = require("@angular/http");
-var app_component_1 = require("./app.component");
-var model_module_1 = require("../models/model.module");
-var AppModule = /** @class */ (function () {
-    function AppModule() {
+var repository_1 = require("./repository");
+var ModelModule = /** @class */ (function () {
+    function ModelModule() {
     }
-    AppModule = __decorate([
+    ModelModule = __decorate([
         core_1.NgModule({
-            declarations: [app_component_1.AppComponent],
-            imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, http_1.HttpModule, model_module_1.ModelModule],
-            providers: [],
-            bootstrap: [app_component_1.AppComponent]
+            providers: [repository_1.Repository]
         })
-    ], AppModule);
-    return AppModule;
+    ], ModelModule);
+    return ModelModule;
 }());
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+exports.ModelModule = ModelModule;
+//# sourceMappingURL=model.module.js.map

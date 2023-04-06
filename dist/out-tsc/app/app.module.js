@@ -10,9 +10,24 @@ var core_1 = require("@angular/core");
 var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
 var app_component_1 = require("./app.component");
+<<<<<<< HEAD
 var AppModule = (function () {
     function AppModule() {
     }
+=======
+var model_module_1 = require("../models/model.module");
+var AppModule = /** @class */ (function () {
+    function AppModule() {
+    }
+    AppModule = __decorate([
+        core_1.NgModule({
+            declarations: [app_component_1.AppComponent],
+            imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, http_1.HttpModule, model_module_1.ModelModule],
+            providers: [],
+            bootstrap: [app_component_1.AppComponent]
+        })
+    ], AppModule);
+>>>>>>> ee2d71cd9ac5fb1be626837869ddd639f8414b43
     return AppModule;
 }());
 AppModule = __decorate([

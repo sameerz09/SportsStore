@@ -6,6 +6,7 @@ import "rxjs/add/operator/map";
 const productsUrl = "/api/products";
 @Injectable()
 export class Repository {
+<<<<<<< HEAD
     private productData: Product;
     constructor(private http: Http) {
         this.getProduct(1);
@@ -24,4 +25,24 @@ export class Repository {
         console.log("Product Data Requested");
         return this.productData;
     }
+=======
+private productData: Product;
+constructor(private http: Http) {
+this.getProduct(1);
+}
+getProduct(id: number) {
+this.sendRequest(RequestMethod.Get, productsUrl + "/" + id)
+.subscribe(response => { this.productData = response; });
+}
+private sendRequest(verb: RequestMethod, url: string,
+data?: any): Observable<any> {
+return this.http.request(new Request({
+method: verb, url: url, body: data
+})).map(response => response.json());
+}
+get product(): Product {
+console.log("Product Data Requested");
+return this.productData;
+}
+>>>>>>> ee2d71cd9ac5fb1be626837869ddd639f8414b43
 }

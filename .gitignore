@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/ProjectEvaluation/sportsstore.projects.v6.1
+/.vs/SportsStore/config/applicationhost.config
+/.vs/ProjectEvaluation/sportsstore.metadata.v6.1

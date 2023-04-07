@@ -2111,9 +2111,10 @@ var Repository = (function () {
     }
     Repository.prototype.getProduct = function (id) {
         var _this = this;
-        this.sendRequest(__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* RequestMethod */].Get, productsUrl + "/" + id)
+        this.http.get("/api/products/" + id)
             .subscribe(function (response) {
-            _this.product = response.json();
+            _this.productData = response.json();
+            console.log("Product Data Received");
         });
     };
     Repository.prototype.getProducts = function (related) {
@@ -2314,7 +2315,7 @@ module.exports = module.exports.toString();
 /***/ 87:
 /***/ (function(module, exports) {
 
-module.exports = "<table class=\"table table-sm table-striped\">\r\n    <tr>\r\n        <th>Name</th>\r\n        <th>Category</th>\r\n        <th>Price</th>\r\n        <th>Supplier</th>\r\n        <th>Ratings</th>\r\n    </tr>\r\n    <tr *ngFor=\"let product of products\">\r\n        <td>{{product.name}}</td>\r\n        <td>{{product.category}}</td>\r\n        <td>{{product.price}}</td>\r\n        <!--<td>{{product.supplier?.name || 'None'}}</td>\r\n        <td>{{product.ratings?.length || 0}}</td>-->\r\n    </tr>\r\n</table>"
+module.exports = "<table class=\"table table-sm table-striped\">\r\n<tr>\r\n<th>Name</th><th>Category</th><th>Price</th>\r\n<th>Supplier</th><th>Ratings</th>\r\n</tr>\r\n<tr *ngFor=\"let product of products\">\r\n<td>{{product.name}}</td>\r\n<td>{{product.category}}</td>\r\n<td>{{product.price}}</td>\r\n<td>{{product.supplier?.name || 'None'}}</td>\r\n<td>{{product.ratings?.length || 0}}</td>\r\n</tr>\r\n</table>"
 
 /***/ })
 

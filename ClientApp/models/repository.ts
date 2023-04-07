@@ -6,13 +6,15 @@ import "rxjs/add/operator/map";
 const productsUrl = "/api/products";
 @Injectable()
 export class Repository {
+    private productData: Product;
     constructor(private http: Http) {
         this.getProducts(true);
     }
     getProduct(id: number) {
-        this.sendRequest(RequestMethod.Get, productsUrl + "/" + id)
+        this.http.get("/api/products/" + id)
             .subscribe(response => {
-                this.product = response.json();
+                this.productData = response.json();
+                console.log("Product Data Received");
             });
     }
     getProducts(related = false) {
@@ -25,6 +27,7 @@ export class Repository {
             method: verb, url: url, body: data
         })).map(response => response.json());
     }
+    
     product: Product;
     products: Product[];
 }

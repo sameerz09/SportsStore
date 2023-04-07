@@ -20,10 +20,9 @@ var Repository = /** @class */ (function () {
     }
     Repository.prototype.getProduct = function (id) {
         var _this = this;
-        this.http.get("/api/products/" + id)
+        this.sendRequest(http_1.RequestMethod.Get, productsUrl + "/" + id)
             .subscribe(function (response) {
-            _this.productData = response.json();
-            console.log("Product Data Received");
+            _this.product = response.json();
         });
     };
     Repository.prototype.getProducts = function (related) {

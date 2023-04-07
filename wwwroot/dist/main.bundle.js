@@ -2111,10 +2111,9 @@ var Repository = (function () {
     }
     Repository.prototype.getProduct = function (id) {
         var _this = this;
-        this.http.get("/api/products/" + id)
+        this.sendRequest(__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* RequestMethod */].Get, productsUrl + "/" + id)
             .subscribe(function (response) {
-            _this.productData = response.json();
-            console.log("Product Data Received");
+            _this.product = response.json();
         });
     };
     Repository.prototype.getProducts = function (related) {

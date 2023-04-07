@@ -1,10 +1,10 @@
 webpackJsonp([1],{
 
-/***/ 179:
+/***/ 178:
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(15);
-module.exports = __webpack_require__(80);
+module.exports = __webpack_require__(79);
 
 
 /***/ }),
@@ -2088,8 +2088,6 @@ webpackEmptyContext.id = 53;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(56);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(150);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Repository; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2102,8 +2100,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
-var productsUrl = "/api/products";
 var Repository = (function () {
     function Repository(http) {
         this.http = http;
@@ -2111,27 +2107,14 @@ var Repository = (function () {
     }
     Repository.prototype.getProduct = function (id) {
         var _this = this;
-        this.sendRequest(__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* RequestMethod */].Get, productsUrl + "/" + id)
-            .subscribe(function (response) { _this.productData = response; });
+        this.http.get("/api/products/" + id)
+            .subscribe(function (response) { return _this.product = response.json(); });
     };
-    Repository.prototype.sendRequest = function (verb, url, data) {
-        return this.http.request(new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Request */]({
-            method: verb, url: url, body: data
-        })).map(function (response) { return response.json(); });
-    };
-    Object.defineProperty(Repository.prototype, "product", {
-        get: function () {
-            console.log("Product Data Requested");
-            return this.productData;
-        },
-        enumerable: true,
-        configurable: true
-    });
     return Repository;
 }());
 Repository = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["b" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* Http */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
 ], Repository);
 
 var _a;
@@ -2139,13 +2122,13 @@ var _a;
 
 /***/ }),
 
-/***/ 80:
+/***/ 79:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(90);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_app_module__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(89);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_app_module__ = __webpack_require__(83);
 
 
 var bootApplication = function () {
@@ -2170,7 +2153,7 @@ else {
 
 /***/ }),
 
-/***/ 83:
+/***/ 82:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2204,8 +2187,8 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_3" /* Component */])({
         selector: 'app-root',
-        template: __webpack_require__(87),
-        styles: [__webpack_require__(86)]
+        template: __webpack_require__(86),
+        styles: [__webpack_require__(85)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object])
 ], AppComponent);
@@ -2215,16 +2198,16 @@ var _a;
 
 /***/ }),
 
-/***/ 84:
+/***/ 83:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(89);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(88);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(56);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(83);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_model_module__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_model_module__ = __webpack_require__(84);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2256,7 +2239,7 @@ AppModule = __decorate([
 
 /***/ }),
 
-/***/ 85:
+/***/ 84:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2286,7 +2269,7 @@ ModelModule = __decorate([
 
 /***/ }),
 
-/***/ 86:
+/***/ 85:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(46)(false);
@@ -2304,12 +2287,12 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 87:
+/***/ 86:
 /***/ (function(module, exports) {
 
 module.exports = "<table class=\"table table-sm table-striped\">\r\n    <tr><th>Name</th><td>{{product?.name || 'Loading Data...'}}</td></tr>\r\n    <tr><th>Category</th><td>{{product?.category || 'Loading Data...'}}</td></tr>\r\n    <tr>\r\n        <th>Description</th>\r\n        <td>{{product?.description || 'Loading Data...'}}</td>\r\n    </tr>\r\n    <tr><th>Price</th><td>{{product?.price || 'Loading Data...'}}</td></tr>\r\n</table>"
 
 /***/ })
 
-},[179]);
+},[178]);
 //# sourceMappingURL=main.bundle.js.map

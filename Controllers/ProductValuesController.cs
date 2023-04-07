@@ -1,5 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SportsStore.Models;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
+
+
+
+
+
 namespace SportsStore.Controllers
 {
     [Route("api/products")]
@@ -14,7 +21,10 @@ namespace SportsStore.Controllers
         public Product GetProduct(long id)
         {
             System.Threading.Thread.Sleep(5000);
-            return context.Products.Find(id);
+            return context.Products
+                   .Include(p => p.Supplier)
+                   .Include(p => p.Ratings)
+                   .FirstOrDefault(p => p.ProductId == id);
         }
     }
 }

@@ -2290,7 +2290,7 @@ module.exports = module.exports.toString();
 /***/ 86:
 /***/ (function(module, exports) {
 
-module.exports = "<table class=\"table table-sm table-striped\">\r\n    <tr><th>Name</th><td>{{product?.name || 'Loading Data...'}}</td></tr>\r\n    <tr><th>Category</th><td>{{product?.category || 'Loading Data...'}}</td></tr>\r\n    <tr>\r\n        <th>Description</th>\r\n        <td>{{product?.description || 'Loading Data...'}}</td>\r\n    </tr>\r\n    <tr><th>Price</th><td>{{product?.price || 'Loading Data...'}}</td></tr>\r\n</table>"
+module.exports = "<table class=\"table table-sm table-striped\">\r\n    <tr><th colspan=\"2\" class=\"bg-info\">Product</th></tr>\r\n    <tr><th>Name</th><td>{{product?.name || 'Loading Data...'}}</td></tr>\r\n    <tr><th>Category</th><td>{{product?.category || 'Loading Data...'}}</td></tr>\r\n    <tr>\r\n        <th>Description</th>\r\n        <td>{{product?.description || 'Loading Data...'}}</td>\r\n    </tr>\r\n    <tr><th>Price</th><td>{{product?.price || 'Loading Data...'}}</td></tr>\r\n    <tr><th colspan=\"2\" class=\"bg-info\">Supplier</th></tr>\r\n    <tr><th>Name</th><td>{{product?.supplier?.name || 'Loading Data...'}}</td></tr>\r\n    <tr><th>City</th><td>{{product?.supplier?.city || 'Loading Data...'}}</td></tr>\r\n    <tr><th>State</th><td>{{product?.supplier?.state || 'Loading Data...'}}</td></tr>\r\n    <tr><th>Products</th><td>{{product?.supplier?.products?.length || 'Loading Data...'}}</td></tr>\r\n   \r\n\r\n</table>"
 
 /***/ })
 

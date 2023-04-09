@@ -18,7 +18,6 @@ var suppliersUrl = "/api/suppliers";
 var Repository = /** @class */ (function () {
     function Repository(http) {
         //this.filter.category = "soccer";
-        //this.filter.search = "Kayak";
         this.http = http;
         this.filterObject = new configClasses_repository_1.Filter();
         this.suppliers = [];

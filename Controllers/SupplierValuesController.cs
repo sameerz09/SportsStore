@@ -18,26 +18,7 @@ namespace SportsStore.Controllers
         {
             return context.Suppliers;
         }
-        [HttpPost]
-
-        public IActionResult CreateProduct([FromBody] ProductData pdata)
-        {
-            if (ModelState.IsValid)
-            {
-                Product p = pdata.Product;
-                if (p.Supplier != null && p.Supplier.SupplierId != 0)
-                {
-                    context.Attach(p.Supplier);
-                }
-                context.Add(p);
-                context.SaveChanges();
-                return Ok(p.ProductId);
-            }
-            else
-            {
-                return BadRequest(ModelState);
-            }
-        }
+      
         [HttpPost]
         public IActionResult CreateSupplier([FromBody] SupplierData sdata)
         {

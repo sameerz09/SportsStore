@@ -2,11 +2,7 @@
 using SportsStore.Models;
 using SportsStore.Models.BindingTargets;
 using System.Collections.Generic;
-<<<<<<< HEAD
-=======
 
-
->>>>>>> 994cbf911b5a8ac7f8bc8e0da821c1d22f1dbad0
 namespace SportsStore.Controllers
 {
     [Route("api/suppliers")]
@@ -23,8 +19,7 @@ namespace SportsStore.Controllers
             return context.Suppliers;
         }
         [HttpPost]
-<<<<<<< HEAD
-=======
+
         public IActionResult CreateProduct([FromBody] ProductData pdata)
         {
             if (ModelState.IsValid)
@@ -44,7 +39,6 @@ namespace SportsStore.Controllers
             }
         }
         [HttpPost]
->>>>>>> 994cbf911b5a8ac7f8bc8e0da821c1d22f1dbad0
         public IActionResult CreateSupplier([FromBody] SupplierData sdata)
         {
             if (ModelState.IsValid)
@@ -59,9 +53,7 @@ namespace SportsStore.Controllers
                 return BadRequest(ModelState);
             }
         }
-<<<<<<< HEAD
-=======
 
->>>>>>> 994cbf911b5a8ac7f8bc8e0da821c1d22f1dbad0
+
     }
 }

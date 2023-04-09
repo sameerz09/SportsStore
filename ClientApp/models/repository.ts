@@ -27,6 +27,7 @@ export class Repository {
 >>>>>>> 994cbf911b5a8ac7f8bc8e0da821c1d22f1dbad0
         this.filter.related = true;
         this.getProducts();
+
     }
     getProduct(id: number) {
         this.sendRequest(RequestMethod.Get, productsUrl + "/" + id)

@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SportsStore.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
-using System.Collections.Generic;
+using SportsStore.Models;
 using SportsStore.Models.BindingTargets;
+using System.Collections.Generic;
+using System.Linq;
 
 
 
@@ -20,7 +20,7 @@ namespace SportsStore.Controllers
         [HttpGet("{id}")]
         public Product GetProduct(long id)
         {
-            System.Threading.Thread.Sleep(5000);
+            //System.Threading.Thread.Sleep(5000);
             Product result = context.Products
                    .Include(p => p.Supplier).ThenInclude(s => s.Products)
                    .Include(p => p.Ratings)
@@ -30,13 +30,14 @@ namespace SportsStore.Controllers
                 if (result.Supplier != null)
                 {
                     result.Supplier.Products = result.Supplier.Products.Select(p =>
-                       new Product {
+                       new Product
+                       {
                            ProductId = p.ProductId,
                            Name = p.Name,
                            Category = p.Category,
                            Description = p.Description,
                            Price = p.Price,
-                        });
+                       });
                 }
                 if (result.Ratings != null)
                 {
@@ -68,11 +69,13 @@ namespace SportsStore.Controllers
             }
 
 
+
             if (related)
             {
                 query = query.Include(p => p.Supplier).Include(p => p.Ratings);
                 List<Product> data = query.ToList();
-                data.ForEach(p => {
+                data.ForEach(p =>
+                {
                     if (p.Supplier != null)
                     {
                         p.Supplier.Products = null;

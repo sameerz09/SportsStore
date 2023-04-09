@@ -43,6 +43,7 @@ createProductAndSupplier() {
     let p = new Product(0, "Rocket-Powered Shoes", "Running",
             "Set a new record", 100, s);
     this.repo.createProductAndSupplier(p, s);
+
 }
 
 >>>>>>> 994cbf911b5a8ac7f8bc8e0da821c1d22f1dbad0

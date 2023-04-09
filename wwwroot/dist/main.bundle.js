@@ -1,6 +1,6 @@
-webpackJsonp([2],{
+webpackJsonp([1],{
 
-/***/ 179:
+/***/ 180:
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(15);
@@ -28,8 +28,9 @@ webpackEmptyContext.id = 53;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(56);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(153);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(154);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__configClasses_repository__ = __webpack_require__(85);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Repository; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -43,26 +44,44 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var productsUrl = "/api/products";
 var Repository = (function () {
     function Repository(http) {
         this.http = http;
-        this.getProduct(1);
+        this.filterObject = new __WEBPACK_IMPORTED_MODULE_3__configClasses_repository__["a" /* Filter */]();
+        this.filter.category = "soccer";
+        this.filter.related = true;
+        this.getProducts();
     }
     Repository.prototype.getProduct = function (id) {
         var _this = this;
         this.sendRequest(__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* RequestMethod */].Get, productsUrl + "/" + id)
-            .subscribe(function (response) { _this.productData = response; });
+            .subscribe(function (response) {
+            _this.product = response.json();
+        });
+    };
+    Repository.prototype.getProducts = function (related) {
+        var _this = this;
+        if (related === void 0) { related = false; }
+        var url = productsUrl + "?related=" + this.filter.related;
+        if (this.filter.category) {
+            url += "&category=" + this.filter.category;
+        }
+        if (this.filter.search) {
+            url += "&search=" + this.filter.search;
+        }
+        this.sendRequest(__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* RequestMethod */].Get, url)
+            .subscribe(function (response) { return _this.products = response; });
     };
     Repository.prototype.sendRequest = function (verb, url, data) {
         return this.http.request(new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Request */]({
             method: verb, url: url, body: data
         })).map(function (response) { return response.json(); });
     };
-    Object.defineProperty(Repository.prototype, "product", {
+    Object.defineProperty(Repository.prototype, "filter", {
         get: function () {
-            console.log("Product Data Requested");
-            return this.productData;
+            return this.filterObject;
         },
         enumerable: true,
         configurable: true
@@ -84,7 +103,7 @@ var _a;
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(90);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(91);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_app_module__ = __webpack_require__(84);
 
 
@@ -139,13 +158,20 @@ var AppComponent = (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(AppComponent.prototype, "products", {
+        get: function () {
+            return this.repo.products;
+        },
+        enumerable: true,
+        configurable: true
+    });
     return AppComponent;
 }());
 AppComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_3" /* Component */])({
         selector: 'app-root',
-        template: __webpack_require__(87),
-        styles: [__webpack_require__(86)]
+        template: __webpack_require__(88),
+        styles: [__webpack_require__(87)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object])
 ], AppComponent);
@@ -161,10 +187,10 @@ var _a;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(89);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(90);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(56);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(83);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_model_module__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_model_module__ = __webpack_require__(86);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -200,6 +226,26 @@ AppModule = __decorate([
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Filter; });
+var Filter = (function () {
+    function Filter() {
+        this.related = false;
+    }
+    Filter.prototype.reset = function () {
+        this.category = this.search = null;
+        this.related = false;
+    };
+    return Filter;
+}());
+
+//# sourceMappingURL=configClasses.repository.js.map
+
+/***/ }),
+
+/***/ 86:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__repository__ = __webpack_require__(54);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ModelModule; });
@@ -226,7 +272,7 @@ ModelModule = __decorate([
 
 /***/ }),
 
-/***/ 86:
+/***/ 87:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(48)(false);
@@ -244,12 +290,12 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 87:
+/***/ 88:
 /***/ (function(module, exports) {
 
-module.exports = "<table class=\"table table-sm table-striped\">\r\n    <tr><th>Name</th><td>{{product?.name || 'Loading Data...'}}</td></tr>\r\n    <tr><th>Category</th><td>{{product?.category || 'Loading Data...'}}</td></tr>\r\n    <tr>\r\n        <th>Description</th>\r\n        <td>{{product?.description || 'Loading Data...'}}</td>\r\n    </tr>\r\n    <tr><th>Price</th><td>{{product?.price || 'Loading Data...'}}</td></tr>\r\n</table>"
+module.exports = "<table class=\"table table-sm table-striped\">\r\n<tr>\r\n<th>Name</th><th>Category</th><th>Price</th>\r\n<th>Supplier</th><th>Ratings</th>\r\n</tr>\r\n<tr *ngFor=\"let product of products\">\r\n<td>{{product.name}}</td>\r\n<td>{{product.category}}</td>\r\n<td>{{product.price}}</td>\r\n<td>{{product.supplier?.name || 'None'}}</td>\r\n<td>{{product.ratings?.length || 0}}</td>\r\n</tr>\r\n</table>"
 
 /***/ })
 
-},[179]);
+},[180]);
 //# sourceMappingURL=main.bundle.js.map

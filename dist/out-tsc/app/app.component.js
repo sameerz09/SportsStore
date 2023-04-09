@@ -12,6 +12,31 @@ var AppComponent = (function () {
         // title = no_such_object;
         //  title = no_such_object;
     }
+<<<<<<< HEAD
+=======
+    Object.defineProperty(AppComponent.prototype, "product", {
+        get: function () {
+            return this.repo.product;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AppComponent.prototype, "products", {
+        get: function () {
+            return this.repo.products;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    AppComponent = __decorate([
+        core_1.Component({
+            selector: 'app-root',
+            templateUrl: './app.component.html',
+            styleUrls: ['./app.component.css']
+        }),
+        __metadata("design:paramtypes", [repository_1.Repository])
+    ], AppComponent);
+>>>>>>> 3f46948aabd3340840df64fad90398b597640f49
     return AppComponent;
 }());
 AppComponent = __decorate([

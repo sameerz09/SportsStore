@@ -2109,11 +2109,10 @@ var productsUrl = "/api/products";
 var suppliersUrl = "/api/suppliers";
 var Repository = (function () {
     function Repository(http) {
-        //this.filter.category = "soccer";
-        //this.filter.search = "Kayak";
         this.http = http;
         this.filterObject = new __WEBPACK_IMPORTED_MODULE_3__configClasses_repository__["a" /* Filter */]();
         this.suppliers = [];
+        //this.filter.category = "soccer";
         this.filter.related = true;
         this.getProducts();
     }
@@ -2442,7 +2441,7 @@ module.exports = module.exports.toString();
 /***/ 90:
 /***/ (function(module, exports) {
 
-module.exports = "<table class=\"table table-sm table-striped\">\r\n    <tr>\r\n        <th>Name</th>\r\n        <th>Category</th>\r\n        <th>Price</th>\r\n        <th>Supplier</th>\r\n        <th>Ratings</th>\r\n    </tr>\r\n    <tr *ngFor=\"let product of products\">\r\n        <td>{{product.name}}</td>\r\n        <td>{{product.category}}</td>\r\n        <td>{{product.price}}</td>\r\n        <td>{{product.supplier?.name || 'None'}}</td>\r\n        <td>{{product.ratings?.length || 0}}</td>\r\n    </tr>\r\n</table>\r\n<button class=\"btn btn-primary m-1\" (click)=\"createProduct()\">\r\n    Create Product\r\n</button>\r\n<button class=\"btn btn-primary m-1\" (click)=\"createProductAndSupplier()\">\r\n    Create Product and Supplier\r\n</button>"
+module.exports = "<table class=\"table table-sm table-striped\">\r\n    <tr>\r\n        <th>Name</th>\r\n        <th>Category</th>\r\n        <th>Price</th>\r\n        <th>Supplier</th>\r\n        <th>Ratings</th>\r\n    </tr>\r\n    <tr *ngFor=\"let product of products\">\r\n        <td>{{product.name}}</td>\r\n        <td>{{product.category}}</td>\r\n        <td>{{product.price}}</td>\r\n        <td>{{product.supplier?.name || 'None'}}</td>\r\n        <td>{{product.ratings?.length || 0}}</td>\r\n    </tr>\r\n \r\n</table>\r\n<button class=\"btn btn-primary m-1\" (click)=\"createProduct()\">\r\n    Create Product\r\n</button>\r\n<button class=\"btn btn-primary m-1\" (click)=\"createProductAndSupplier()\">\r\n    Create Product and Supplier\r\n</button>"
 
 /***/ })
 

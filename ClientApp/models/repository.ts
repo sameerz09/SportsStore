@@ -17,6 +17,7 @@ export class Repository {
         //this.filter.category = "soccer";
         this.filter.related = true;
         this.getProducts();
+
     }
     getProduct(id: number) {
         this.sendRequest(RequestMethod.Get, productsUrl + "/" + id)

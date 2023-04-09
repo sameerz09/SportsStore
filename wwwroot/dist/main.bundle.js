@@ -1,6 +1,6 @@
 webpackJsonp([1],{
 
-/***/ 180:
+/***/ 182:
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(15);
@@ -2088,7 +2088,7 @@ webpackEmptyContext.id = 53;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(56);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(151);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(153);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__configClasses_repository__ = __webpack_require__(85);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Repository; });
@@ -2106,11 +2106,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var productsUrl = "/api/products";
+var suppliersUrl = "/api/suppliers";
 var Repository = (function () {
     function Repository(http) {
+        //this.filter.category = "soccer";
+        //this.filter.search = "Kayak";
         this.http = http;
         this.filterObject = new __WEBPACK_IMPORTED_MODULE_3__configClasses_repository__["a" /* Filter */]();
-        this.filter.category = "soccer";
+        this.suppliers = [];
         this.filter.related = true;
         this.getProducts();
     }
@@ -2133,6 +2136,39 @@ var Repository = (function () {
         }
         this.sendRequest(__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* RequestMethod */].Get, url)
             .subscribe(function (response) { return _this.products = response; });
+    };
+    Repository.prototype.getSuppliers = function () {
+        var _this = this;
+        this.sendRequest(__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* RequestMethod */].Get, suppliersUrl)
+            .subscribe(function (response) { return _this.suppliers = response; });
+    };
+    Repository.prototype.createProduct = function (prod) {
+        var _this = this;
+        var data = {
+            name: prod.name, category: prod.category,
+            description: prod.description, price: prod.price,
+            supplier: prod.supplier ? prod.supplier.supplierId : 0
+        };
+        this.sendRequest(__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* RequestMethod */].Post, productsUrl, data)
+            .subscribe(function (response) {
+            prod.productId = response;
+            _this.products.push(prod);
+        });
+    };
+    Repository.prototype.createProductAndSupplier = function (prod, supp) {
+        var _this = this;
+        var data = {
+            name: supp.name, city: supp.city, state: supp.state
+        };
+        this.sendRequest(__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* RequestMethod */].Post, suppliersUrl, data)
+            .subscribe(function (response) {
+            supp.supplierId = response;
+            prod.supplier = supp;
+            _this.suppliers.push(supp);
+            if (prod != null) {
+                _this.createProduct(prod);
+            }
+        });
     };
     Repository.prototype.sendRequest = function (verb, url, data) {
         return this.http.request(new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Request */]({
@@ -2163,7 +2199,7 @@ var _a;
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(93);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_app_module__ = __webpack_require__(84);
 
 
@@ -2195,6 +2231,8 @@ else {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_repository__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_product_model__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_supplier_model__ = __webpack_require__(88);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2205,6 +2243,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
+
 
 
 var AppComponent = (function () {
@@ -2225,13 +2265,21 @@ var AppComponent = (function () {
         enumerable: true,
         configurable: true
     });
+    AppComponent.prototype.createProduct = function () {
+        this.repo.createProduct(new __WEBPACK_IMPORTED_MODULE_2__models_product_model__["a" /* Product */](0, "X-Ray Scuba Mask", "Watersports", "See what the fish are hiding", 49.99, this.repo.products[0].supplier));
+    };
+    AppComponent.prototype.createProductAndSupplier = function () {
+        var s = new __WEBPACK_IMPORTED_MODULE_3__models_supplier_model__["a" /* Supplier */](0, "Rocket Shoe Corp", "Boston", "MA");
+        var p = new __WEBPACK_IMPORTED_MODULE_2__models_product_model__["a" /* Product */](0, "Rocket-Powered Shoes", "Running", "Set a new record", 100, s);
+        this.repo.createProductAndSupplier(p, s);
+    };
     return AppComponent;
 }());
 AppComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_3" /* Component */])({
         selector: 'app-root',
-        template: __webpack_require__(88),
-        styles: [__webpack_require__(87)]
+        template: __webpack_require__(90),
+        styles: [__webpack_require__(89)]
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__models_repository__["a" /* Repository */]) === "function" && _a || Object])
 ], AppComponent);
@@ -2247,7 +2295,7 @@ var _a;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(90);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(92);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(56);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(83);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_model_module__ = __webpack_require__(86);
@@ -2333,6 +2381,47 @@ ModelModule = __decorate([
 /***/ }),
 
 /***/ 87:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Product; });
+var Product = (function () {
+    function Product(productId, name, category, description, price, supplier, ratings) {
+        this.productId = productId;
+        this.name = name;
+        this.category = category;
+        this.description = description;
+        this.price = price;
+        this.supplier = supplier;
+        this.ratings = ratings;
+    }
+    return Product;
+}());
+
+//# sourceMappingURL=product.model.js.map
+
+/***/ }),
+
+/***/ 88:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Supplier; });
+var Supplier = (function () {
+    function Supplier(supplierId, name, city, state) {
+        this.supplierId = supplierId;
+        this.name = name;
+        this.city = city;
+        this.state = state;
+    }
+    return Supplier;
+}());
+
+//# sourceMappingURL=supplier.model.js.map
+
+/***/ }),
+
+/***/ 89:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(46)(false);
@@ -2350,12 +2439,12 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 88:
+/***/ 90:
 /***/ (function(module, exports) {
 
-module.exports = "<table class=\"table table-sm table-striped\">\r\n<tr>\r\n<th>Name</th><th>Category</th><th>Price</th>\r\n<th>Supplier</th><th>Ratings</th>\r\n</tr>\r\n<tr *ngFor=\"let product of products\">\r\n<td>{{product.name}}</td>\r\n<td>{{product.category}}</td>\r\n<td>{{product.price}}</td>\r\n<td>{{product.supplier?.name || 'None'}}</td>\r\n<td>{{product.ratings?.length || 0}}</td>\r\n</tr>\r\n</table>"
+module.exports = "<table class=\"table table-sm table-striped\">\r\n    <tr>\r\n        <th>Name</th>\r\n        <th>Category</th>\r\n        <th>Price</th>\r\n        <th>Supplier</th>\r\n        <th>Ratings</th>\r\n    </tr>\r\n    <tr *ngFor=\"let product of products\">\r\n        <td>{{product.name}}</td>\r\n        <td>{{product.category}}</td>\r\n        <td>{{product.price}}</td>\r\n        <td>{{product.supplier?.name || 'None'}}</td>\r\n        <td>{{product.ratings?.length || 0}}</td>\r\n    </tr>\r\n</table>\r\n<button class=\"btn btn-primary m-1\" (click)=\"createProduct()\">\r\n    Create Product\r\n</button>\r\n<button class=\"btn btn-primary m-1\" (click)=\"createProductAndSupplier()\">\r\n    Create Product and Supplier\r\n</button>"
 
 /***/ })
 
-},[180]);
+},[182]);
 //# sourceMappingURL=main.bundle.js.map

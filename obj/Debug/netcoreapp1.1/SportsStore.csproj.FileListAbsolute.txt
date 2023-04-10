@@ -25,3 +25,7 @@ C:\Users\szuhairi\Desktop\books\esntl-angular-for-asp.net-core-mvc-master\Chapte
 C:\Users\PC\Desktop\last_proj\git_project\obj\Debug\netcoreapp1.1\SportsStore.csproj.AssemblyReference.cache
 C:\Users\PC\Desktop\last_proj\git_project\obj\Debug\netcoreapp1.1\SportsStore.dll
 C:\Users\PC\Desktop\last_proj\git_project\obj\Debug\netcoreapp1.1\SportsStore.pdb
+C:\Users\PC\Desktop\last_proj\git_project\obj\Debug\netcoreapp1.1\SportsStore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\PC\Desktop\last_proj\git_project\obj\Debug\netcoreapp1.1\SportsStore.AssemblyInfoInputs.cache
+C:\Users\PC\Desktop\last_proj\git_project\obj\Debug\netcoreapp1.1\SportsStore.AssemblyInfo.cs
+C:\Users\PC\Desktop\last_proj\git_project\obj\Debug\netcoreapp1.1\SportsStore.csproj.CoreCompileInputs.cache

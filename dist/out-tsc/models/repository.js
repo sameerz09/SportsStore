@@ -17,7 +17,6 @@ var productsUrl = "/api/products";
 var suppliersUrl = "/api/suppliers";
 var Repository = /** @class */ (function () {
     function Repository(http) {
-        //this.filter.category = "soccer";
         this.http = http;
         this.filterObject = new configClasses_repository_1.Filter();
         this.suppliers = [];
@@ -77,10 +76,53 @@ var Repository = /** @class */ (function () {
             }
         });
     };
+    Repository.prototype.replaceProduct = function (prod) {
+        var _this = this;
+        var data = {
+            name: prod.name, category: prod.category,
+            description: prod.description, price: prod.price,
+            supplier: prod.supplier ? prod.supplier.supplierId : 0
+        };
+        this.sendRequest(http_1.RequestMethod.Put, productsUrl + "/" + prod.productId, data)
+            .subscribe(function (response) { return _this.getProducts(); });
+    };
+    Repository.prototype.replaceSupplier = function (supp) {
+        var _this = this;
+        var data = {
+            name: supp.name, city: supp.city, state: supp.state
+        };
+        this.sendRequest(http_1.RequestMethod.Put, suppliersUrl + "/" + supp.supplierId, data)
+            .subscribe(function (response) { return _this.getProducts(); });
+    };
+    Repository.prototype.updateProduct = function (id, changes) {
+        var _this = this;
+        var patch = [];
+        changes.forEach(function (value, key) {
+            return patch.push({ op: "replace", path: key, value: value });
+        });
+        this.sendRequest(http_1.RequestMethod.Patch, productsUrl + "/" + id, patch)
+            .subscribe(function (response) { return _this.getProducts(); });
+    };
+    Repository.prototype.deleteProduct = function (id) {
+        var _this = this;
+        this.sendRequest(http_1.RequestMethod.Delete, productsUrl + "/" + id)
+            .subscribe(function (response) { return _this.getProducts(); });
+    };
+    Repository.prototype.deleteSupplier = function (id) {
+        var _this = this;
+        this.sendRequest(http_1.RequestMethod.Delete, suppliersUrl + "/" + id)
+            .subscribe(function (response) {
+            _this.getProducts();
+            _this.getSuppliers();
+        });
+    };
     Repository.prototype.sendRequest = function (verb, url, data) {
         return this.http.request(new http_1.Request({
             method: verb, url: url, body: data
-        })).map(function (response) { return response.json(); });
+        })).map(function (response) {
+            return response.headers.get("Content-Length") != "0"
+                ? response.json() : null;
+        });
     };
     Object.defineProperty(Repository.prototype, "filter", {
         get: function () {

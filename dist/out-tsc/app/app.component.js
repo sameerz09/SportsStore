@@ -39,6 +39,28 @@ var AppComponent = /** @class */ (function () {
         var p = new product_model_1.Product(0, "Rocket-Powered Shoes", "Running", "Set a new record", 100, s);
         this.repo.createProductAndSupplier(p, s);
     };
+    AppComponent.prototype.replaceProduct = function () {
+        var p = this.repo.products[2];
+        p.name = "Modified Product";
+        p.category = "Modified Category";
+        this.repo.replaceProduct(p);
+    };
+    AppComponent.prototype.replaceSupplier = function () {
+        var s = new supplier_model_1.Supplier(1, "Modified Supplier", "New York", "NY");
+        this.repo.replaceSupplier(s);
+    };
+    AppComponent.prototype.updateProduct = function () {
+        var changes = new Map();
+        changes.set("name", "Sami Kyak Kayak");
+        changes.set("supplier", null);
+        this.repo.updateProduct(1, changes);
+    };
+    AppComponent.prototype.deleteProduct = function () {
+        this.repo.deleteProduct(1);
+    };
+    AppComponent.prototype.deleteSupplier = function () {
+        this.repo.deleteSupplier(3);
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'app-root',

@@ -5,12 +5,6 @@ import { Observable } from "rxjs/Observable";
 import "rxjs/add/operator/map";
 import { Filter } from "./configClasses.repository";
 import { Supplier } from "./supplier.model";
-<<<<<<< HEAD
-
-=======
->>>>>>> 994cbf911b5a8ac7f8bc8e0da821c1d22f1dbad0
-
-
 const productsUrl = "/api/products";
 const suppliersUrl = "/api/suppliers";
 
@@ -18,13 +12,7 @@ const suppliersUrl = "/api/suppliers";
 export class Repository {
     private filterObject = new Filter();
     constructor(private http: Http) {
-        //this.filter.category = "soccer";
-<<<<<<< HEAD
-        //this.filter.search = "Kayak";
 
-
-=======
->>>>>>> 994cbf911b5a8ac7f8bc8e0da821c1d22f1dbad0
         this.filter.related = true;
         this.getProducts();
 
@@ -82,10 +70,6 @@ export class Repository {
 
     
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 994cbf911b5a8ac7f8bc8e0da821c1d22f1dbad0
     private sendRequest(verb: RequestMethod, url: string, data?: any)
         : Observable<any> {
         return this.http.request(new Request({

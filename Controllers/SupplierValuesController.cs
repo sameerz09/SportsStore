@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SportsStore.Models;
+using SportsStore.Models.BindingTargets;
 using System.Collections.Generic;
 
 namespace SportsStore.Controllers

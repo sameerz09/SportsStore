@@ -29,10 +29,14 @@ let p = new Product(0, "Rocket-Powered Shoes", "Running",
 "Set a new record", 100, s);
 this.repo.createProductAndSupplier(p, s);
     }
-
-    
-
-
-
-
+replaceProduct() {
+        let p = this.repo.products[2];
+        p.name = "Modified Product";
+        p.category = "Modified Category";
+        this.repo.replaceProduct(p);
+    }
+replaceSupplier() {
+        let s = new Supplier(1, "Modified Supplier", "New York", "NY");
+        this.repo.replaceSupplier(s);
+    }
 }

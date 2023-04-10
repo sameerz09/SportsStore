@@ -67,15 +67,36 @@ export class Repository {
                 }
             });
     }
-
-    
-
+    replaceProduct(prod: Product) {
+        let data = {
+            name: prod.name, category: prod.category,
+            description: prod.description, price: prod.price,
+            supplier: prod.supplier ? prod.supplier.supplierId : 0
+        };
+        this.sendRequest(RequestMethod.Put, productsUrl + "/" + prod.productId, data)
+            .subscribe(response => this.getProducts());
+    }
+    replaceSupplier(supp: Supplier) {
+        let data = {
+            name: supp.name, city: supp.city, state: supp.state
+        };
+        this.sendRequest(RequestMethod.Put,
+            suppliersUrl + "/" + supp.supplierId, data)
+            .subscribe(response => this.getProducts());
+    }
     private sendRequest(verb: RequestMethod, url: string, data?: any)
         : Observable<any> {
         return this.http.request(new Request({
             method: verb, url: url, body: data
-        })).map(response => response.json());
+        })).map(response => {
+            return response.headers.get("Content-Length") != "0"
+                ? response.json() : null;
+        });
     }
+
+    
+
+   
     product: Product;
     products: Product[];
     suppliers: Supplier[] = [];

@@ -5,12 +5,6 @@ import { Observable } from "rxjs/Observable";
 import "rxjs/add/operator/map";
 import { Filter } from "./configClasses.repository";
 import { Supplier } from "./supplier.model";
-<<<<<<< HEAD
-
-=======
->>>>>>> 994cbf911b5a8ac7f8bc8e0da821c1d22f1dbad0
-
-
 const productsUrl = "/api/products";
 const suppliersUrl = "/api/suppliers";
 
@@ -18,13 +12,7 @@ const suppliersUrl = "/api/suppliers";
 export class Repository {
     private filterObject = new Filter();
     constructor(private http: Http) {
-        //this.filter.category = "soccer";
-<<<<<<< HEAD
-        //this.filter.search = "Kayak";
 
-
-=======
->>>>>>> 994cbf911b5a8ac7f8bc8e0da821c1d22f1dbad0
         this.filter.related = true;
         this.getProducts();
 
@@ -79,19 +67,36 @@ export class Repository {
                 }
             });
     }
-
-    
-
-<<<<<<< HEAD
-=======
-
->>>>>>> 994cbf911b5a8ac7f8bc8e0da821c1d22f1dbad0
+    replaceProduct(prod: Product) {
+        let data = {
+            name: prod.name, category: prod.category,
+            description: prod.description, price: prod.price,
+            supplier: prod.supplier ? prod.supplier.supplierId : 0
+        };
+        this.sendRequest(RequestMethod.Put, productsUrl + "/" + prod.productId, data)
+            .subscribe(response => this.getProducts());
+    }
+    replaceSupplier(supp: Supplier) {
+        let data = {
+            name: supp.name, city: supp.city, state: supp.state
+        };
+        this.sendRequest(RequestMethod.Put,
+            suppliersUrl + "/" + supp.supplierId, data)
+            .subscribe(response => this.getProducts());
+    }
     private sendRequest(verb: RequestMethod, url: string, data?: any)
         : Observable<any> {
         return this.http.request(new Request({
             method: verb, url: url, body: data
-        })).map(response => response.json());
+        })).map(response => {
+            return response.headers.get("Content-Length") != "0"
+                ? response.json() : null;
+        });
     }
+
+    
+
+   
     product: Product;
     products: Product[];
     suppliers: Supplier[] = [];

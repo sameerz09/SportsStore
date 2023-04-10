@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SportsStore.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
-using System.Collections.Generic;
+using SportsStore.Models;
 using SportsStore.Models.BindingTargets;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace SportsStore.Controllers
 {
@@ -54,7 +54,8 @@ namespace SportsStore.Controllers
             {
                 query = query.Include(p => p.Supplier).Include(p => p.Ratings);
                 List<Product> data = query.ToList();
-                data.ForEach(p => {
+                data.ForEach(p =>
+                {
                     if (p.Supplier != null)
                     {
                         p.Supplier.Products = null;
@@ -90,5 +91,26 @@ namespace SportsStore.Controllers
                 return BadRequest(ModelState);
             }
         }
+        [HttpPut("{id}")]
+        public IActionResult ReplaceProduct(long id, [FromBody] ProductData pdata)
+        {
+            if (ModelState.IsValid)
+            {
+                Product p = pdata.Product;
+                p.ProductId = id;
+                if (p.Supplier != null && p.Supplier.SupplierId != 0)
+                {
+                    context.Attach(p.Supplier);
+                }
+                context.Update(p);
+                context.SaveChanges();
+                return Ok();
+            }
+            else
+            {
+                return BadRequest(ModelState);
+            }
+        }
+
     }
 }

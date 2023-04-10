@@ -84,6 +84,27 @@ export class Repository {
             suppliersUrl + "/" + supp.supplierId, data)
             .subscribe(response => this.getProducts());
     }
+
+    updateProduct(id: number, changes: Map<string, any>) {
+        let patch = [];
+        changes.forEach((value, key) =>
+            patch.push({ op: "replace", path: key, value: value }));
+        this.sendRequest(RequestMethod.Patch, productsUrl + "/" + id, patch)
+            .subscribe(response => this.getProducts());
+    }
+    deleteProduct(id: number) {
+        this.sendRequest(RequestMethod.Delete, productsUrl + "/" + id)
+            .subscribe(response => this.getProducts());
+    }
+
+    deleteSupplier(id: number) {
+        this.sendRequest(RequestMethod.Delete, suppliersUrl + "/" + id)
+            .subscribe(response => {
+                this.getProducts();
+                this.getSuppliers();
+            });
+    }
+
     private sendRequest(verb: RequestMethod, url: string, data?: any)
         : Observable<any> {
         return this.http.request(new Request({
@@ -93,6 +114,7 @@ export class Repository {
                 ? response.json() : null;
         });
     }
+
 
     
 
@@ -104,6 +126,7 @@ export class Repository {
     get filter(): Filter {
         return this.filterObject;
     }
+
     
 
 }

@@ -126,6 +126,28 @@ var Repository = (function () {
         this.sendRequest(__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* RequestMethod */].Put, suppliersUrl + "/" + supp.supplierId, data)
             .subscribe(function (response) { return _this.getProducts(); });
     };
+    Repository.prototype.updateProduct = function (id, changes) {
+        var _this = this;
+        var patch = [];
+        changes.forEach(function (value, key) {
+            return patch.push({ op: "replace", path: key, value: value });
+        });
+        this.sendRequest(__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* RequestMethod */].Patch, productsUrl + "/" + id, patch)
+            .subscribe(function (response) { return _this.getProducts(); });
+    };
+    Repository.prototype.deleteProduct = function (id) {
+        var _this = this;
+        this.sendRequest(__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* RequestMethod */].Delete, productsUrl + "/" + id)
+            .subscribe(function (response) { return _this.getProducts(); });
+    };
+    Repository.prototype.deleteSupplier = function (id) {
+        var _this = this;
+        this.sendRequest(__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* RequestMethod */].Delete, suppliersUrl + "/" + id)
+            .subscribe(function (response) {
+            _this.getProducts();
+            _this.getSuppliers();
+        });
+    };
     Repository.prototype.sendRequest = function (verb, url, data) {
         return this.http.request(new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Request */]({
             method: verb, url: url, body: data
@@ -241,6 +263,18 @@ var AppComponent = (function () {
     AppComponent.prototype.replaceSupplier = function () {
         var s = new __WEBPACK_IMPORTED_MODULE_3__models_supplier_model__["a" /* Supplier */](1, "Modified Supplier", "New York", "NY");
         this.repo.replaceSupplier(s);
+    };
+    AppComponent.prototype.updateProduct = function () {
+        var changes = new Map();
+        changes.set("name", "Sami Kyak Kayak");
+        changes.set("supplier", null);
+        this.repo.updateProduct(1, changes);
+    };
+    AppComponent.prototype.deleteProduct = function () {
+        this.repo.deleteProduct(1);
+    };
+    AppComponent.prototype.deleteSupplier = function () {
+        this.repo.deleteSupplier(3);
     };
     return AppComponent;
 }());
@@ -411,7 +445,7 @@ module.exports = module.exports.toString();
 /***/ 90:
 /***/ (function(module, exports) {
 
-module.exports = "<table class=\"table table-sm table-striped\">\r\n    <tr>\r\n        <th>Name</th>\r\n        <th>Category</th>\r\n        <th>Price</th>\r\n        <th>Supplier</th>\r\n        <th>Ratings</th>\r\n    </tr>\r\n    <tr *ngFor=\"let product of products\">\r\n        <td>{{product.name}}</td>\r\n        <td>{{product.category}}</td>\r\n        <td>{{product.price}}</td>\r\n        <td>{{product.supplier?.name || 'None'}}</td>\r\n        <td>{{product.ratings?.length || 0}}</td>\r\n    </tr>\r\n\r\n</table>\r\n<button class=\"btn btn-primary m-1\" (click)=\"createProduct()\">\r\n    Create Product\r\n</button>\r\n<button class=\"btn btn-primary m-1\" (click)=\"createProductAndSupplier()\">\r\n    Create Product and Supplier\r\n</button>\r\n<button class=\"btn btn-primary m-1\" (click)=\"replaceProduct()\">\r\n    Replace Product\r\n</button>\r\n<button class=\"btn btn-primary m-1\" (click)=\"replaceSupplier()\">\r\n    Replace Supplier\r\n</button>"
+module.exports = "<table class=\"table table-sm table-striped\">\r\n    <tr>\r\n        <th>Name</th>\r\n        <th>Category</th>\r\n        <th>Price</th>\r\n        <th>Supplier</th>\r\n        <th>Ratings</th>\r\n    </tr>\r\n    <tr *ngFor=\"let product of products\">\r\n        <td>{{product.name}}</td>\r\n        <td>{{product.category}}</td>\r\n        <td>{{product.price}}</td>\r\n        <td>{{product.supplier?.name || 'None'}}</td>\r\n        <td>{{product.ratings?.length || 0}}</td>\r\n    </tr>\r\n\r\n</table>\r\n<button class=\"btn btn-primary m-1\" (click)=\"createProduct()\">\r\n    Create Product\r\n</button>\r\n<button class=\"btn btn-primary m-1\" (click)=\"createProductAndSupplier()\">\r\n    Create Product and Supplier\r\n</button>\r\n<button class=\"btn btn-primary m-1\" (click)=\"replaceProduct()\">\r\n    Replace Product\r\n</button>\r\n<button class=\"btn btn-primary m-1\" (click)=\"replaceSupplier()\">\r\n    Replace Supplier\r\n</button>\r\n<button class=\"btn btn-primary m-1\" (click)=\"updateProduct()\">\r\n    Update Product\r\n</button>\r\n<button class=\"btn btn-primary m-1\" (click)=\"deleteProduct()\">\r\n    Delete Product\r\n</button>\r\n<button class=\"btn btn-primary m-1\" (click)=\"deleteSupplier()\">\r\n    Delete Supplier\r\n</button>"
 
 /***/ })
 

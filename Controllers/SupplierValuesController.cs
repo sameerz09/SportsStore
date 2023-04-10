@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SportsStore.Models;
-using SportsStore.Models.BindingTargets;
 using System.Collections.Generic;
 
 namespace SportsStore.Controllers
@@ -18,14 +17,8 @@ namespace SportsStore.Controllers
         {
             return context.Suppliers;
         }
-<<<<<<< HEAD
 
         [HttpPost]
-
-=======
-      
-        [HttpPost]
->>>>>>> a9026bddd4343b6f5918b4f5fa9dec3e00c2450c
         public IActionResult CreateSupplier([FromBody] SupplierData sdata)
         {
             if (ModelState.IsValid)
@@ -41,9 +34,6 @@ namespace SportsStore.Controllers
             }
         }
 
-<<<<<<< HEAD
-=======
 
->>>>>>> a9026bddd4343b6f5918b4f5fa9dec3e00c2450c
     }
 }

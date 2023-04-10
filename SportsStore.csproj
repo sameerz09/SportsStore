@@ -3,6 +3,12 @@
     <TargetFramework>netcoreapp1.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Models\BindingTargets\**" />
+    <Content Remove="Models\BindingTargets\**" />
+    <EmbeddedResource Remove="Models\BindingTargets\**" />
+    <None Remove="Models\BindingTargets\**" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.3" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="1.1.8" />
@@ -16,8 +22,5 @@
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools" Version="1.0.0" />
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="1.0.0" />
     
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\BindingTargets\" />
   </ItemGroup>
 </Project>

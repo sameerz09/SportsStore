@@ -5,6 +5,8 @@ import { Observable } from "rxjs/Observable";
 import "rxjs/add/operator/map";
 import { Filter } from "./configClasses.repository";
 import { Supplier } from "./supplier.model";
+
+
 const productsUrl = "/api/products";
 const suppliersUrl = "/api/suppliers";
 

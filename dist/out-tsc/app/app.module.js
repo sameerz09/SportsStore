@@ -12,12 +12,14 @@ var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
 var app_component_1 = require("./app.component");
 var model_module_1 = require("../models/model.module");
+var productTable_component_1 = require("./structure/productTable.component");
+var categoryFilter_component_1 = require("./structure/categoryFilter.component");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            declarations: [app_component_1.AppComponent],
+            declarations: [app_component_1.AppComponent, productTable_component_1.ProductTableComponent, categoryFilter_component_1.CategoryFilterComponent],
             imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, http_1.HttpModule, model_module_1.ModelModule],
             providers: [],
             bootstrap: [app_component_1.AppComponent]

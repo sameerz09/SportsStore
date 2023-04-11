@@ -20,6 +20,7 @@ var Repository = /** @class */ (function () {
         this.http = http;
         this.filterObject = new configClasses_repository_1.Filter();
         this.suppliers = [];
+        //this.filter.category = "soccer";
         this.filter.related = true;
         this.getProducts();
     }
@@ -36,9 +37,11 @@ var Repository = /** @class */ (function () {
         var url = productsUrl + "?related=" + this.filter.related;
         if (this.filter.category) {
             url += "&category=" + this.filter.category;
+            /*url += "&category=" + "soccer";*/
         }
         if (this.filter.search) {
             url += "&search=" + this.filter.search;
+            /*url += "&search=" + "soccer";*/
         }
         this.sendRequest(http_1.RequestMethod.Get, url)
             .subscribe(function (response) { return _this.products = response; });
@@ -119,10 +122,7 @@ var Repository = /** @class */ (function () {
     Repository.prototype.sendRequest = function (verb, url, data) {
         return this.http.request(new http_1.Request({
             method: verb, url: url, body: data
-        })).map(function (response) {
-            return response.headers.get("Content-Length") != "0"
-                ? response.json() : null;
-        });
+        })).map(function (response) { return response.json(); });
     };
     Object.defineProperty(Repository.prototype, "filter", {
         get: function () {

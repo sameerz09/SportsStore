@@ -11,28 +11,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var repository_1 = require("../../models/repository");
-var ProductTableComponent = /** @class */ (function () {
-    function ProductTableComponent(repo) {
+var ProductDetailComponent = /** @class */ (function () {
+    function ProductDetailComponent(repo) {
         this.repo = repo;
     }
-    Object.defineProperty(ProductTableComponent.prototype, "products", {
+    Object.defineProperty(ProductDetailComponent.prototype, "product", {
         get: function () {
-            return this.repo.products;
+            return this.repo.product;
         },
         enumerable: true,
         configurable: true
     });
-    ProductTableComponent.prototype.selectProduct = function (id) {
-        this.repo.getProduct(id);
-    };
-    ProductTableComponent = __decorate([
+    ProductDetailComponent = __decorate([
         core_1.Component({
-            selector: "product-table",
-            templateUrl: "productTable.component.html"
+            selector: "product-detail",
+            templateUrl: "productDetail.component.html"
         }),
         __metadata("design:paramtypes", [repository_1.Repository])
-    ], ProductTableComponent);
-    return ProductTableComponent;
+    ], ProductDetailComponent);
+    return ProductDetailComponent;
 }());
-exports.ProductTableComponent = ProductTableComponent;
-//# sourceMappingURL=productTable.component.js.map
+exports.ProductDetailComponent = ProductDetailComponent;
+//# sourceMappingURL=productDetail.component.js.map

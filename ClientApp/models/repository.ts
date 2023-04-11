@@ -14,7 +14,7 @@ const suppliersUrl = "/api/suppliers";
 export class Repository {
     private filterObject = new Filter();
     constructor(private http: Http) {
-
+        //this.filter.category = "soccer";
         this.filter.related = true;
         this.getProducts();
 
@@ -30,9 +30,12 @@ export class Repository {
         let url = productsUrl + "?related=" + this.filter.related;
         if (this.filter.category) {
             url += "&category=" + this.filter.category;
+            /*url += "&category=" + "soccer";*/
+            
         }
         if (this.filter.search) {
             url += "&search=" + this.filter.search;
+            /*url += "&search=" + "soccer";*/
         }
 
 
@@ -111,10 +114,9 @@ export class Repository {
         : Observable<any> {
         return this.http.request(new Request({
             method: verb, url: url, body: data
-        })).map(response => {
-            return response.headers.get("Content-Length") != "0"
-                ? response.json() : null;
-        });
+        })).map(response => response.json());
+
+
     }
 
 

@@ -22,7 +22,7 @@ export class Repository {
     getProduct(id: number) {
         this.sendRequest(RequestMethod.Get, productsUrl + "/" + id)
             .subscribe(response => {
-                this.product = response.json();
+                this.product = response;
             });
     }
     getProducts(related = false) {
@@ -114,10 +114,12 @@ export class Repository {
         : Observable<any> {
         return this.http.request(new Request({
             method: verb, url: url, body: data
-        })).map(response => response.json());
-
-
+        })).map(response => {
+            return response.headers.get("Content-Length") != "0"
+                ? response.json() : null;
+        });
     }
+
 
 
     

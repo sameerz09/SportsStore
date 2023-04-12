@@ -7,7 +7,10 @@ templateUrl: "productDetail.component.html"
 })
 export class ProductDetailComponent {
 constructor(private repo: Repository) { }
-get product(): Product {
-return this.repo.product;
+    get product(): Product {
+
+    
+        //console.log(this.repo.product.name);
+        return this.repo.product;
 }
 }

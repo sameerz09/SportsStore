@@ -22,10 +22,13 @@ var ProductTableComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    ProductTableComponent.prototype.selectProduct = function (id) {
+        this.repo.getProduct(id);
+    };
     ProductTableComponent = __decorate([
         core_1.Component({
             selector: "product-table",
-            templateUrl: "./productTable.component.html"
+            templateUrl: "productTable.component.html"
         }),
         __metadata("design:paramtypes", [repository_1.Repository])
     ], ProductTableComponent);

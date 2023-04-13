@@ -15,6 +15,7 @@ var model_module_1 = require("../models/model.module");
 var productTable_component_1 = require("./structure/productTable.component");
 var categoryFilter_component_1 = require("./structure/categoryFilter.component");
 var productDetail_component_1 = require("./structure/productDetail.component");
+var app_routing_1 = require("./app.routing");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -22,7 +23,7 @@ var AppModule = /** @class */ (function () {
         core_1.NgModule({
             declarations: [app_component_1.AppComponent, productTable_component_1.ProductTableComponent,
                 categoryFilter_component_1.CategoryFilterComponent, productDetail_component_1.ProductDetailComponent],
-            imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, http_1.HttpModule, model_module_1.ModelModule],
+            imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, http_1.HttpModule, model_module_1.ModelModule, app_routing_1.RoutingConfig],
             providers: [],
             bootstrap: [app_component_1.AppComponent]
         })

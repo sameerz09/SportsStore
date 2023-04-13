@@ -10,33 +10,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var repository_1 = require("../../models/repository");
-var router_1 = require("@angular/router");
-var ProductTableComponent = /** @class */ (function () {
-    function ProductTableComponent(repo, router) {
+var repository_1 = require("../models/repository");
+var ProductListComponent = /** @class */ (function () {
+    function ProductListComponent(repo) {
         this.repo = repo;
-        this.router = router;
     }
-    Object.defineProperty(ProductTableComponent.prototype, "products", {
+    Object.defineProperty(ProductListComponent.prototype, "products", {
         get: function () {
             return this.repo.products;
         },
         enumerable: true,
         configurable: true
     });
-    ProductTableComponent.prototype.selectProduct = function (id) {
-        this.repo.getProduct(id);
-        this.router.navigateByUrl("/detail");
-    };
-    ProductTableComponent = __decorate([
+    var _a;
+    ProductListComponent = __decorate([
         core_1.Component({
-            selector: "product-table",
-            templateUrl: "productTable.component.html"
+            selector: "store-product-list",
+            templateUrl: "productList.component.html"
         }),
-        __metadata("design:paramtypes", [repository_1.Repository,
-            router_1.Router])
-    ], ProductTableComponent);
-    return ProductTableComponent;
+        __metadata("design:paramtypes", [typeof (_a = typeof repository_1.Repository !== "undefined" && repository_1.Repository) === "function" ? _a : Object])
+    ], ProductListComponent);
+    return ProductListComponent;
 }());
-exports.ProductTableComponent = ProductTableComponent;
-//# sourceMappingURL=productTable.component.js.map
+exports.ProductListComponent = ProductListComponent;
+//# sourceMappingURL=productList.component.js.map

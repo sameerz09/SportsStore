@@ -10,27 +10,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var repository_1 = require("../../models/repository");
-var ProductDetailComponent = /** @class */ (function () {
-    function ProductDetailComponent(repo) {
+var repository_1 = require("../models/repository");
+var PaginationComponent = /** @class */ (function () {
+    function PaginationComponent(repo) {
         this.repo = repo;
     }
-    Object.defineProperty(ProductDetailComponent.prototype, "product", {
-        get: function () {
-            //console.log(this.repo.product.name);
-            return this.repo.product;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    ProductDetailComponent = __decorate([
+    var _a;
+    PaginationComponent = __decorate([
         core_1.Component({
-            selector: "product-detail",
-            templateUrl: "productDetail.component.html"
+            selector: "store-pagination",
+            templateUrl: "pagination.component.html"
         }),
-        __metadata("design:paramtypes", [repository_1.Repository])
-    ], ProductDetailComponent);
-    return ProductDetailComponent;
+        __metadata("design:paramtypes", [typeof (_a = typeof repository_1.Repository !== "undefined" && repository_1.Repository) === "function" ? _a : Object])
+    ], PaginationComponent);
+    return PaginationComponent;
 }());
-exports.ProductDetailComponent = ProductDetailComponent;
-//# sourceMappingURL=productDetail.component.js.map
+exports.PaginationComponent = PaginationComponent;
+//# sourceMappingURL=pagination.component.js.map

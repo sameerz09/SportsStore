@@ -18,6 +18,8 @@ C:\Users\PC\Desktop\last_proj\git_project\dist\out-tsc\app\structure\categoryFil
 C:\Users\PC\Desktop\last_proj\git_project\dist\out-tsc\app\structure\categoryFilter.component.js.map
 C:\Users\PC\Desktop\last_proj\git_project\dist\out-tsc\app\structure\productDetail.component.js
 C:\Users\PC\Desktop\last_proj\git_project\dist\out-tsc\app\structure\productDetail.component.js.map
+C:\Users\PC\Desktop\last_proj\git_project\dist\out-tsc\app\app.routing.js
+C:\Users\PC\Desktop\last_proj\git_project\dist\out-tsc\app\app.routing.js.map
 C:\Users\PC\Desktop\last_proj\git_project\dist\out-tsc\app\app.module.js
 C:\Users\PC\Desktop\last_proj\git_project\dist\out-tsc\app\app.module.js.map
 C:\Users\PC\Desktop\last_proj\git_project\dist\out-tsc\boot.js
@@ -32,3 +34,15 @@ C:\Users\PC\Desktop\last_proj\git_project\dist\out-tsc\test.js
 C:\Users\PC\Desktop\last_proj\git_project\dist\out-tsc\test.js.map
 C:\Users\PC\Desktop\last_proj\git_project\dist\out-tsc\environments\environment.prod.js
 C:\Users\PC\Desktop\last_proj\git_project\dist\out-tsc\environments\environment.prod.js.map
+C:\Users\PC\Desktop\last_proj\git_project\dist\out-tsc\app\store\cartSummary.component.js
+C:\Users\PC\Desktop\last_proj\git_project\dist\out-tsc\app\store\cartSummary.component.js.map
+C:\Users\PC\Desktop\last_proj\git_project\dist\out-tsc\app\store\categoryFilter.component.js
+C:\Users\PC\Desktop\last_proj\git_project\dist\out-tsc\app\store\categoryFilter.component.js.map
+C:\Users\PC\Desktop\last_proj\git_project\dist\out-tsc\app\store\pagination.component.js
+C:\Users\PC\Desktop\last_proj\git_project\dist\out-tsc\app\store\pagination.component.js.map
+C:\Users\PC\Desktop\last_proj\git_project\dist\out-tsc\app\store\productList.component.js
+C:\Users\PC\Desktop\last_proj\git_project\dist\out-tsc\app\store\productList.component.js.map
+C:\Users\PC\Desktop\last_proj\git_project\dist\out-tsc\app\store\productSelection.component.js
+C:\Users\PC\Desktop\last_proj\git_project\dist\out-tsc\app\store\productSelection.component.js.map
+C:\Users\PC\Desktop\last_proj\git_project\dist\out-tsc\app\store\ratings.component.js
+C:\Users\PC\Desktop\last_proj\git_project\dist\out-tsc\app\store\ratings.component.js.map

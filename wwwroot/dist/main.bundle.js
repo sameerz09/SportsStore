@@ -154,7 +154,7 @@ module.exports = module.exports.toString();
 /***/ 106:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n    <div class=\"row\">\r\n        <div class=\"col\">\r\n            <category-filter></category-filter>\r\n            <product-table></product-table>\r\n        </div>\r\n        <div class=\"col\">\r\n            <product-detail></product-detail>\r\n        </div>\r\n        <router-outlet></router-outlet>\r\n    </div>\r\n</div>"
+module.exports = "\r\n        <router-outlet></router-outlet>\r\n"
 
 /***/ }),
 

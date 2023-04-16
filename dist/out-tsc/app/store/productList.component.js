@@ -10,25 +10,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var repository_1 = require("../models/repository");
+var repository_1 = require("../../models/repository");
+var cart_model_1 = require("../../models/cart.model");
 var ProductListComponent = /** @class */ (function () {
-    function ProductListComponent(repo) {
+    function ProductListComponent(repo, cart) {
         this.repo = repo;
+        this.cart = cart;
     }
     Object.defineProperty(ProductListComponent.prototype, "products", {
         get: function () {
-            return this.repo.products;
+            if (this.repo.products != null && this.repo.products.length > 0) {
+                var pageIndex = (this.repo.pagination.currentPage - 1)
+                    * this.repo.pagination.productsPerPage;
+                return this.repo.products.slice(pageIndex, pageIndex + this.repo.pagination.productsPerPage);
+            }
         },
         enumerable: true,
         configurable: true
     });
-    var _a;
+    ProductListComponent.prototype.addToCart = function (product) {
+        this.cart.addProduct(product);
+    };
     ProductListComponent = __decorate([
         core_1.Component({
             selector: "store-product-list",
             templateUrl: "productList.component.html"
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof repository_1.Repository !== "undefined" && repository_1.Repository) === "function" ? _a : Object])
+        __metadata("design:paramtypes", [repository_1.Repository, cart_model_1.Cart])
     ], ProductListComponent);
     return ProductListComponent;
 }());

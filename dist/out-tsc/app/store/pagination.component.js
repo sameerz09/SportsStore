@@ -10,18 +10,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var repository_1 = require("../models/repository");
+var repository_1 = require("../../models/repository");
 var PaginationComponent = /** @class */ (function () {
     function PaginationComponent(repo) {
         this.repo = repo;
     }
-    var _a;
+    Object.defineProperty(PaginationComponent.prototype, "pages", {
+        get: function () {
+            if (this.repo.products != null) {
+                return Array(Math.ceil(this.repo.products.length
+                    / this.repo.pagination.productsPerPage))
+                    .fill(0).map(function (x, i) { return i + 1; });
+            }
+            else {
+                return [];
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
+    PaginationComponent.prototype.changePage = function (newPage) {
+        this.repo.pagination.currentPage = newPage;
+    };
     PaginationComponent = __decorate([
         core_1.Component({
             selector: "store-pagination",
             templateUrl: "pagination.component.html"
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof repository_1.Repository !== "undefined" && repository_1.Repository) === "function" ? _a : Object])
+        __metadata("design:paramtypes", [repository_1.Repository])
     ], PaginationComponent);
     return PaginationComponent;
 }());

@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.JsonPatch;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
 using SportsStore.Models;
-using SportsStore.Models.BindingTargets;
-using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System.Collections.Generic;
+using SportsStore.Models.BindingTargets;
+using Microsoft.AspNetCore.JsonPatch;
 
 namespace SportsStore.Controllers
 {
@@ -48,7 +48,7 @@ namespace SportsStore.Controllers
             return result;
         }
         [HttpGet]
-        public IEnumerable<Product> GetProducts(string category, string search, bool related = false)
+        public IActionResult GetProducts(string category, string search, bool related = false, bool metadata = false)
         {
             IQueryable<Product> query = context.Products;
             if (!string.IsNullOrWhiteSpace(category))
@@ -77,13 +77,30 @@ namespace SportsStore.Controllers
                         p.Ratings.ForEach(r => r.Product = null);
                     }
                 });
-                return data;
+
+                return metadata ? CreateMetadata(data) : Ok(data);
             }
             else
             {
-                return query;
+                return metadata ? CreateMetadata(query) : Ok(query);
             }
+
         }
+        private IActionResult CreateMetadata(IEnumerable<Product> products)
+        {
+            return Ok(new
+            {
+                data = products,
+                categories = context.Products.Select(p => p.Category)
+            .Distinct().OrderBy(c => c)
+            });
+        }
+
+
+
+
+
+
         [HttpPost]
         public IActionResult CreateProduct([FromBody] ProductData pdata)
         {

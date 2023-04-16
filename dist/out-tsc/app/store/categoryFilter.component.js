@@ -10,18 +10,35 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var repository_1 = require("../models/repository");
+var repository_1 = require("../../models/repository");
 var CategoryFilterComponent = /** @class */ (function () {
     function CategoryFilterComponent(repo) {
         this.repo = repo;
     }
-    var _a;
+    Object.defineProperty(CategoryFilterComponent.prototype, "categories", {
+        get: function () {
+            return this.repo.categories;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(CategoryFilterComponent.prototype, "currentCategory", {
+        get: function () {
+            return this.repo.filter.category;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    CategoryFilterComponent.prototype.setCurrentCategory = function (newCategory) {
+        this.repo.filter.category = newCategory;
+        this.repo.getProducts();
+    };
     CategoryFilterComponent = __decorate([
         core_1.Component({
             selector: "store-categoryfilter",
             templateUrl: "categoryFilter.component.html"
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof repository_1.Repository !== "undefined" && repository_1.Repository) === "function" ? _a : Object])
+        __metadata("design:paramtypes", [repository_1.Repository])
     ], CategoryFilterComponent);
     return CategoryFilterComponent;
 }());

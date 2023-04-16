@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "oRAsVE9VLtx/ImMnyfwiLz0upLY0yvnbCbO5LbEC+skE0XJ/Gs7H/gh7Q+/7vuUfsg4wMkoJV/LherAsFHlkEw==",
+  "dgSpecHash": "+5Eb8zBQq+WgT5BaUu/MBfpxGJjhwvlBzNx93/dlLHuSjRrubOoz7TYm+xVktYgFoQUiOl8t5VlKYS5qMgc6vg==",
   "success": true,
   "projectFilePath": "C:\\Users\\PC\\Desktop\\last_proj\\git_project\\SportsStore.csproj",
   "expectedPackageFiles": [
@@ -45,6 +45,7 @@
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.aspnetcore.routing.abstractions\\1.1.2\\microsoft.aspnetcore.routing.abstractions.1.1.2.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.aspnetcore.server.iisintegration\\1.1.2\\microsoft.aspnetcore.server.iisintegration.1.1.2.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.aspnetcore.server.kestrel\\1.1.2\\microsoft.aspnetcore.server.kestrel.1.1.2.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\microsoft.aspnetcore.session\\1.1.1\\microsoft.aspnetcore.session.1.1.1.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.aspnetcore.spaservices\\1.1.0\\microsoft.aspnetcore.spaservices.1.1.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.aspnetcore.staticfiles\\1.1.2\\microsoft.aspnetcore.staticfiles.1.1.2.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.aspnetcore.webutilities\\1.1.2\\microsoft.aspnetcore.webutilities.1.1.2.nupkg.sha512",
@@ -62,6 +63,7 @@
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\1.1.1\\microsoft.entityframeworkcore.sqlserver.1.1.1.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\1.1.2\\microsoft.extensions.caching.abstractions.1.1.2.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.extensions.caching.memory\\1.1.2\\microsoft.extensions.caching.memory.1.1.2.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\microsoft.extensions.caching.sqlserver\\1.1.1\\microsoft.extensions.caching.sqlserver.1.1.1.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.extensions.configuration\\1.1.2\\microsoft.extensions.configuration.1.1.2.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\1.1.2\\microsoft.extensions.configuration.abstractions.1.1.2.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.extensions.configuration.binder\\1.1.2\\microsoft.extensions.configuration.binder.1.1.2.nupkg.sha512",

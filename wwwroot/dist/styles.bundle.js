@@ -1,6 +1,10 @@
 webpackJsonp([2],{
 
+<<<<<<< HEAD
 /***/ 211:
+=======
+/***/ 210:
+>>>>>>> ebfe72e03e261d7e5474ea53a79421239866ecf0
 /***/ (function(module, exports) {
 
 /*
@@ -253,11 +257,11 @@ function updateLink(linkElement, obj) {
 
 /***/ }),
 
-/***/ 218:
+/***/ 220:
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(16);
-module.exports = __webpack_require__(96);
+module.exports = __webpack_require__(99);
 
 
 /***/ }),
@@ -2383,7 +2387,7 @@ module.exports = Array.isArray || function (arr) {
 
 /***/ }),
 
-/***/ 96:
+/***/ 99:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
@@ -2392,7 +2396,11 @@ module.exports = Array.isArray || function (arr) {
 var content = __webpack_require__(34);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
+<<<<<<< HEAD
 var update = __webpack_require__(211)(content, {});
+=======
+var update = __webpack_require__(210)(content, {});
+>>>>>>> ebfe72e03e261d7e5474ea53a79421239866ecf0
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(true) {
@@ -2410,5 +2418,5 @@ if(true) {
 
 /***/ })
 
-},[218]);
+},[220]);
 //# sourceMappingURL=styles.bundle.js.map

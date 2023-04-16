@@ -17,6 +17,7 @@ var ProductDetailComponent = /** @class */ (function () {
     }
     Object.defineProperty(ProductDetailComponent.prototype, "product", {
         get: function () {
+            //console.log(this.repo.product.name);
             return this.repo.product;
         },
         enumerable: true,

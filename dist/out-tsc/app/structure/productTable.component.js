@@ -11,9 +11,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var repository_1 = require("../../models/repository");
+var router_1 = require("@angular/router");
 var ProductTableComponent = /** @class */ (function () {
-    function ProductTableComponent(repo) {
+    function ProductTableComponent(repo, router) {
         this.repo = repo;
+        this.router = router;
     }
     Object.defineProperty(ProductTableComponent.prototype, "products", {
         get: function () {
@@ -24,13 +26,15 @@ var ProductTableComponent = /** @class */ (function () {
     });
     ProductTableComponent.prototype.selectProduct = function (id) {
         this.repo.getProduct(id);
+        this.router.navigateByUrl("/detail");
     };
     ProductTableComponent = __decorate([
         core_1.Component({
             selector: "product-table",
             templateUrl: "productTable.component.html"
         }),
-        __metadata("design:paramtypes", [repository_1.Repository])
+        __metadata("design:paramtypes", [repository_1.Repository,
+            router_1.Router])
     ], ProductTableComponent);
     return ProductTableComponent;
 }());

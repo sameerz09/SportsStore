@@ -19,7 +19,9 @@ var Repository = /** @class */ (function () {
     function Repository(http) {
         this.http = http;
         this.filterObject = new configClasses_repository_1.Filter();
+        this.paginationObject = new configClasses_repository_1.Pagination();
         this.suppliers = [];
+        this.categories = [];
         //this.filter.category = "soccer";
         this.filter.related = true;
         this.getProducts();
@@ -28,7 +30,7 @@ var Repository = /** @class */ (function () {
         var _this = this;
         this.sendRequest(http_1.RequestMethod.Get, productsUrl + "/" + id)
             .subscribe(function (response) {
-            _this.product = response.json();
+            _this.product = response;
         });
     };
     Repository.prototype.getProducts = function (related) {
@@ -43,8 +45,13 @@ var Repository = /** @class */ (function () {
             url += "&search=" + this.filter.search;
             /*url += "&search=" + "soccer";*/
         }
+        url += "&metadata=true";
         this.sendRequest(http_1.RequestMethod.Get, url)
-            .subscribe(function (response) { return _this.products = response; });
+            .subscribe(function (response) {
+            _this.products = response.data;
+            _this.categories = response.categories;
+            _this.pagination.currentPage = 1;
+        });
     };
     Repository.prototype.getSuppliers = function () {
         var _this = this;
@@ -122,11 +129,21 @@ var Repository = /** @class */ (function () {
     Repository.prototype.sendRequest = function (verb, url, data) {
         return this.http.request(new http_1.Request({
             method: verb, url: url, body: data
-        })).map(function (response) { return response.json(); });
+        })).map(function (response) {
+            return response.headers.get("Content-Length") != "0"
+                ? response.json() : null;
+        });
     };
     Object.defineProperty(Repository.prototype, "filter", {
         get: function () {
             return this.filterObject;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Repository.prototype, "pagination", {
+        get: function () {
+            return this.paginationObject;
         },
         enumerable: true,
         configurable: true

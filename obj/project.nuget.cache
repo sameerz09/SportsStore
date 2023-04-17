@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "usBOmE5sJKSaNVD6iOdIdPa0QGRIkOGjMI11ra1ZsY0nf8fyhqOXZepyFtXnKNU40fkLzFrXezJrupCJZ2kjuA==",
+  "dgSpecHash": "bNmQ1B9CvXb0JQMnluKK9TMsxJ2E2KeRPVphErj/wkLbVlse+1aQPxsoCAA2ZAO6jUvl94rDhX92y32UM1TG1Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\szuhairi\\Desktop\\books\\esntl-angular-for-asp.net-core-mvc-master\\Chapter 03\\SportsStore\\SportsStore.csproj",
   "expectedPackageFiles": [
@@ -45,6 +45,7 @@
     "C:\\Users\\szuhairi\\.nuget\\packages\\microsoft.aspnetcore.routing.abstractions\\1.1.2\\microsoft.aspnetcore.routing.abstractions.1.1.2.nupkg.sha512",
     "C:\\Users\\szuhairi\\.nuget\\packages\\microsoft.aspnetcore.server.iisintegration\\1.1.2\\microsoft.aspnetcore.server.iisintegration.1.1.2.nupkg.sha512",
     "C:\\Users\\szuhairi\\.nuget\\packages\\microsoft.aspnetcore.server.kestrel\\1.1.2\\microsoft.aspnetcore.server.kestrel.1.1.2.nupkg.sha512",
+    "C:\\Users\\szuhairi\\.nuget\\packages\\microsoft.aspnetcore.session\\1.1.1\\microsoft.aspnetcore.session.1.1.1.nupkg.sha512",
     "C:\\Users\\szuhairi\\.nuget\\packages\\microsoft.aspnetcore.spaservices\\1.1.0\\microsoft.aspnetcore.spaservices.1.1.0.nupkg.sha512",
     "C:\\Users\\szuhairi\\.nuget\\packages\\microsoft.aspnetcore.staticfiles\\1.1.2\\microsoft.aspnetcore.staticfiles.1.1.2.nupkg.sha512",
     "C:\\Users\\szuhairi\\.nuget\\packages\\microsoft.aspnetcore.webutilities\\1.1.2\\microsoft.aspnetcore.webutilities.1.1.2.nupkg.sha512",
@@ -62,6 +63,7 @@
     "C:\\Users\\szuhairi\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\1.1.1\\microsoft.entityframeworkcore.sqlserver.1.1.1.nupkg.sha512",
     "C:\\Users\\szuhairi\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\1.1.2\\microsoft.extensions.caching.abstractions.1.1.2.nupkg.sha512",
     "C:\\Users\\szuhairi\\.nuget\\packages\\microsoft.extensions.caching.memory\\1.1.2\\microsoft.extensions.caching.memory.1.1.2.nupkg.sha512",
+    "C:\\Users\\szuhairi\\.nuget\\packages\\microsoft.extensions.caching.sqlserver\\1.1.1\\microsoft.extensions.caching.sqlserver.1.1.1.nupkg.sha512",
     "C:\\Users\\szuhairi\\.nuget\\packages\\microsoft.extensions.configuration\\1.1.2\\microsoft.extensions.configuration.1.1.2.nupkg.sha512",
     "C:\\Users\\szuhairi\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\1.1.2\\microsoft.extensions.configuration.abstractions.1.1.2.nupkg.sha512",
     "C:\\Users\\szuhairi\\.nuget\\packages\\microsoft.extensions.configuration.binder\\1.1.2\\microsoft.extensions.configuration.binder.1.1.2.nupkg.sha512",
@@ -225,5 +227,12 @@
     "C:\\Users\\szuhairi\\.nuget\\packages\\system.xml.xpath\\4.0.1\\system.xml.xpath.4.0.1.nupkg.sha512",
     "C:\\Users\\szuhairi\\.nuget\\packages\\system.xml.xpath.xdocument\\4.0.1\\system.xml.xpath.xdocument.4.0.1.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\szuhairi\\Desktop\\books\\esntl-angular-for-asp.net-core-mvc-master\\Chapter 03\\SportsStore\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

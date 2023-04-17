@@ -30,6 +30,17 @@ namespace SportsStore {
                 = ReferenceLoopHandling.Serialize;
                 opts.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
             });
+            services.AddDistributedSqlServerCache(options => {
+                options.ConnectionString =
+                Configuration["Data:Products:ConnectionString"];
+                options.SchemaName = "dbo";
+                options.TableName = "SessionData";
+            });
+            services.AddSession(options => {
+                options.CookieName = "SportsStore.Session";
+                options.IdleTimeout = System.TimeSpan.FromHours(48);
+                options.CookieHttpOnly = false;
+            });
         }
 
         public void Configure(IApplicationBuilder app, 
@@ -54,6 +65,7 @@ namespace SportsStore {
             //}
 
             app.UseStaticFiles();
+            app.UseSession();
 
             app.UseMvc(routes => {
                 routes.MapRoute(

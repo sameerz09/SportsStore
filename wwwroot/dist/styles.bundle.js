@@ -1,10 +1,6 @@
 webpackJsonp([2],{
 
-<<<<<<< HEAD
-/***/ 211:
-=======
-/***/ 210:
->>>>>>> ebfe72e03e261d7e5474ea53a79421239866ecf0
+/***/ 213:
 /***/ (function(module, exports) {
 
 /*
@@ -2396,11 +2392,7 @@ module.exports = Array.isArray || function (arr) {
 var content = __webpack_require__(34);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
-<<<<<<< HEAD
-var update = __webpack_require__(211)(content, {});
-=======
-var update = __webpack_require__(210)(content, {});
->>>>>>> ebfe72e03e261d7e5474ea53a79421239866ecf0
+var update = __webpack_require__(213)(content, {});
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(true) {

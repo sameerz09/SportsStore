@@ -15,6 +15,7 @@ require("rxjs/add/operator/map");
 var configClasses_repository_1 = require("./configClasses.repository");
 var productsUrl = "/api/products";
 var suppliersUrl = "/api/suppliers";
+var ordersUrl = "/api/orders";
 var Repository = /** @class */ (function () {
     function Repository(http) {
         this.http = http;
@@ -22,6 +23,7 @@ var Repository = /** @class */ (function () {
         this.paginationObject = new configClasses_repository_1.Pagination();
         this.suppliers = [];
         this.categories = [];
+        this.orders = [];
         //this.filter.category = "soccer";
         this.filter.related = true;
         this.getProducts();
@@ -134,6 +136,28 @@ var Repository = /** @class */ (function () {
                 ? response.json() : null;
         });
     };
+    Repository.prototype.getOrders = function () {
+        var _this = this;
+        this.sendRequest(http_1.RequestMethod.Get, ordersUrl)
+            .subscribe(function (data) { return _this.orders = data; });
+    };
+    Repository.prototype.createOrder = function (order) {
+        this.sendRequest(http_1.RequestMethod.Post, ordersUrl, {
+            name: order.name,
+            address: order.address,
+            payment: order.payment,
+            products: order.products
+        }).subscribe(function (data) {
+            order.orderConfirmation = data;
+            order.cart.clear();
+            order.clear();
+        });
+    };
+    Repository.prototype.shipOrder = function (order) {
+        var _this = this;
+        this.sendRequest(http_1.RequestMethod.Post, ordersUrl + "/" + order.orderId)
+            .subscribe(function (r) { return _this.getOrders(); });
+    };
     Object.defineProperty(Repository.prototype, "filter", {
         get: function () {
             return this.filterObject;
@@ -148,6 +172,13 @@ var Repository = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    Repository.prototype.storeSessionData = function (dataType, data) {
+        return this.sendRequest(http_1.RequestMethod.Post, "/api/session/" + dataType, data)
+            .subscribe(function (response) { });
+    };
+    Repository.prototype.getSessionData = function (dataType) {
+        return this.sendRequest(http_1.RequestMethod.Get, "/api/session/" + dataType);
+    };
     Repository = __decorate([
         core_1.Injectable(),
         __metadata("design:paramtypes", [http_1.Http])

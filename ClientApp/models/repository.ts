@@ -142,7 +142,16 @@ export class Repository {
 
     get pagination(): Pagination {
         return this.paginationObject;
-}
+    }
+
+
+    storeSessionData(dataType: string, data: any) {
+        return this.sendRequest(RequestMethod.Post, "/api/session/" + dataType, data)
+            .subscribe(response => { });
+    }
+    getSessionData(dataType: string): Observable<any> {
+        return this.sendRequest(RequestMethod.Get, "/api/session/" + dataType);
+    }
 
     
 

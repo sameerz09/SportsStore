@@ -10,10 +10,12 @@ import { ModelModule } from "../models/model.module";
 import { RoutingConfig } from "./app.routing";
 import { StoreModule } from "./store/store.module";
 import { ProductSelectionComponent } from "./store/productSelection.component";
+import { AdminModule } from "./admin/admin.module";
+
 @NgModule({
     declarations: [AppComponent],
     imports: [BrowserModule, FormsModule, HttpModule, ModelModule,
-        RoutingConfig, StoreModule],
+        RoutingConfig, StoreModule, AdminModule],
     providers: [],
     bootstrap: [AppComponent]
 })

@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { Product } from "./product.model";
 import { Repository } from "./repository";
 
+
 @Injectable()
 export class Cart {
     selections: ProductSelection[] = [];

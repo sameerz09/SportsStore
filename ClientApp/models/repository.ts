@@ -6,6 +6,9 @@ import "rxjs/add/operator/map";
 import { Filter, Pagination } from "./configClasses.repository";
 import { Supplier } from "./supplier.model";
 import { Order } from "./order.model";
+import { ErrorHandlerService, ValidationError } from "../app/errorHandler.service";
+import "rxjs/add/operator/catch";
+
 
 
 const productsUrl = "/api/products";
@@ -125,7 +128,22 @@ export class Repository {
         })).map(response => {
             return response.headers.get("Content-Length") != "0"
                 ? response.json() : null;
-        });
+        })
+        .catch((errorResponse: Response) => {
+if (errorResponse.status == 400 ) {
+let jsonData: string;
+try {
+jsonData = errorResponse.json();
+} catch (e) {
+throw new Error("Network Error");
+}
+let messages = Object.getOwnPropertyNames(jsonData)
+.map(p => jsonData[p]);
+throw new ValidationError(messages);
+}
+throw new Error("Network Error");
+});
+
     }
     getOrders() {
 this.sendRequest(RequestMethod.Get, ordersUrl)
@@ -177,6 +195,8 @@ this.sendRequest(RequestMethod.Post, ordersUrl + "/" + order.orderId)
     }
     getSessionData(dataType: string): Observable<any> {
         return this.sendRequest(RequestMethod.Get, "/api/session/" + dataType);
+
+    
     }
 
     

@@ -1,11 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SportsStore.Models;
 using System.Collections.Generic;
 using System.Linq;
+
 namespace SportsStore.Controllers
 {
     [Route("/api/orders")]
+    [Authorize(Roles = "Administrator")]
     public class OrderValuesController : Controller
     {
         private DataContext context;
@@ -20,6 +23,7 @@ namespace SportsStore.Controllers
             .Include(o => o.Products).Include(o => o.Payment);
         }
         [HttpPost("{id}")]
+        [AllowAnonymous]
         public void MarkShipped(long id)
         {
             Order order = context.Orders.Find(id);

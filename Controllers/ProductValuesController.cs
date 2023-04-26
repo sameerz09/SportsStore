@@ -1,14 +1,18 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using SportsStore.Models;
-using Microsoft.EntityFrameworkCore;
-using System.Linq;
-using System.Collections.Generic;
-using SportsStore.Models.BindingTargets;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using SportsStore.Models;
+using SportsStore.Models.BindingTargets;
+using System.Collections.Generic;
+using System.Linq;
+
+
 
 namespace SportsStore.Controllers
 {
     [Route("api/products")]
+    [Authorize(Roles = "Administrator")]
     public class ProductValuesController : Controller
     {
         private DataContext context;
@@ -17,12 +21,17 @@ namespace SportsStore.Controllers
             context = ctx;
         }
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public Product GetProduct(long id)
         {
-            Product result = context.Products
-            .Include(p => p.Supplier).ThenInclude(s => s.Products)
-            .Include(p => p.Ratings)
-            .First(p => p.ProductId == id);
+            IQueryable<Product> query = context.Products
+            .Include(p => p.Ratings);
+            if (HttpContext.User.IsInRole("Administrator"))
+            {
+                query = query.Include(p => p.Supplier)
+                .ThenInclude(s => s.Products);
+            }
+            Product result = query.First(p => p.ProductId == id);
             if (result != null)
             {
                 if (result.Supplier != null)
@@ -48,6 +57,7 @@ namespace SportsStore.Controllers
             return result;
         }
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult GetProducts(string category, string search, bool related = false, bool metadata = false)
         {
             IQueryable<Product> query = context.Products;
@@ -62,7 +72,8 @@ namespace SportsStore.Controllers
                 query = query.Where(p => p.Name.ToLower().Contains(searchLower)
                 || p.Description.ToLower().Contains(searchLower));
             }
-            if (related)
+            if (related && HttpContext.User.IsInRole("Administrator"))
+
             {
                 query = query.Include(p => p.Supplier).Include(p => p.Ratings);
                 List<Product> data = query.ToList();

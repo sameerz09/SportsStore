@@ -13,6 +13,8 @@ var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 require("rxjs/add/operator/map");
 var configClasses_repository_1 = require("./configClasses.repository");
+var errorHandler_service_1 = require("../app/errorHandler.service");
+require("rxjs/add/operator/catch");
 var productsUrl = "/api/products";
 var suppliersUrl = "/api/suppliers";
 var ordersUrl = "/api/orders";
@@ -134,6 +136,21 @@ var Repository = /** @class */ (function () {
         })).map(function (response) {
             return response.headers.get("Content-Length") != "0"
                 ? response.json() : null;
+        })
+            .catch(function (errorResponse) {
+            if (errorResponse.status == 400) {
+                var jsonData_1;
+                try {
+                    jsonData_1 = errorResponse.json();
+                }
+                catch (e) {
+                    throw new Error("Network Error");
+                }
+                var messages = Object.getOwnPropertyNames(jsonData_1)
+                    .map(function (p) { return jsonData_1[p]; });
+                throw new errorHandler_service_1.ValidationError(messages);
+            }
+            throw new Error("Network Error");
         });
     };
     Repository.prototype.getOrders = function () {

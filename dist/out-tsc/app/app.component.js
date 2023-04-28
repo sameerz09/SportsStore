@@ -10,56 +10,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var repository_1 = require("../models/repository");
-var product_model_1 = require("../models/product.model");
-var supplier_model_1 = require("../models/supplier.model");
+var errorHandler_service_1 = require("./errorHandler.service");
 var AppComponent = /** @class */ (function () {
-    function AppComponent(repo) {
-        this.repo = repo;
+    function AppComponent(errorHandler) {
+        var _this = this;
+        errorHandler.errors.subscribe(function (error) {
+            _this.lastError = error;
+        });
     }
-    Object.defineProperty(AppComponent.prototype, "product", {
+    Object.defineProperty(AppComponent.prototype, "error", {
         get: function () {
-            return this.repo.product;
+            return this.lastError;
         },
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(AppComponent.prototype, "products", {
-        get: function () {
-            return this.repo.products;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    AppComponent.prototype.createProduct = function () {
-        this.repo.createProduct(new product_model_1.Product(0, "X-Ray Scuba Mask", "Watersports", "See what the fish are hiding", 49.99, this.repo.products[0].supplier));
-    };
-    AppComponent.prototype.createProductAndSupplier = function () {
-        var s = new supplier_model_1.Supplier(0, "Rocket Shoe Corp", "Boston", "MA");
-        var p = new product_model_1.Product(0, "Rocket-Powered Shoes", "Running", "Set a new record", 100, s);
-        this.repo.createProductAndSupplier(p, s);
-    };
-    AppComponent.prototype.replaceProduct = function () {
-        var p = this.repo.products[2];
-        p.name = "Modified Product";
-        p.category = "Modified Category";
-        this.repo.replaceProduct(p);
-    };
-    AppComponent.prototype.replaceSupplier = function () {
-        var s = new supplier_model_1.Supplier(1, "Modified Supplier", "New York", "NY");
-        this.repo.replaceSupplier(s);
-    };
-    AppComponent.prototype.updateProduct = function () {
-        var changes = new Map();
-        changes.set("name", "Sami Kyak Kayak");
-        changes.set("supplier", null);
-        this.repo.updateProduct(1, changes);
-    };
-    AppComponent.prototype.deleteProduct = function () {
-        this.repo.deleteProduct(1);
-    };
-    AppComponent.prototype.deleteSupplier = function () {
-        this.repo.deleteSupplier(3);
+    AppComponent.prototype.clearError = function () {
+        this.lastError = null;
     };
     AppComponent = __decorate([
         core_1.Component({
@@ -67,7 +34,7 @@ var AppComponent = /** @class */ (function () {
             templateUrl: './app.component.html',
             styleUrls: ['./app.component.css']
         }),
-        __metadata("design:paramtypes", [repository_1.Repository])
+        __metadata("design:paramtypes", [errorHandler_service_1.ErrorHandlerService])
     ], AppComponent);
     return AppComponent;
 }());

@@ -1,11 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SportsStore.Models;
 using SportsStore.Models.BindingTargets;
 using System.Collections.Generic;
 
+
 namespace SportsStore.Controllers
 {
     [Route("api/suppliers")]
+    [Authorize(Roles = "Administrator")]
     public class SupplierValuesController : Controller
     {
         private DataContext context;

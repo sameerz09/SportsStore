@@ -7,6 +7,7 @@ using SportsStore.Models;
 namespace SportsStore.Controllers
 {
     [Route("/api/session")]
+    [ValidateAntiForgeryToken]
     public class SessionValuesController : Controller
     {
         [HttpGet("cart")]

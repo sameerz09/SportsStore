@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Es+N9cBQaxG5PFIJg6n4K0A+Wy00Eesz15aAc6gDgBiT6qCOrIy4LphkvY7agyYHVLD3irtqHOtBA8sMzPv7qA==",
+  "dgSpecHash": "pDgieNcDFWRt8MY2ep0Wi4MSPAtCMJA8PVpKq/j4Iz5jICQRlHQI7BZr3vzcy9y6baxElWx0bXYIEmuXnA87Sw==",
   "success": true,
   "projectFilePath": "C:\\Users\\PC\\Desktop\\last_proj\\git_project\\SportsStore.csproj",
   "expectedPackageFiles": [
@@ -72,6 +72,7 @@
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.extensions.configuration\\1.1.2\\microsoft.extensions.configuration.1.1.2.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\1.1.2\\microsoft.extensions.configuration.abstractions.1.1.2.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.extensions.configuration.binder\\1.1.2\\microsoft.extensions.configuration.binder.1.1.2.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\microsoft.extensions.configuration.commandline\\1.1.1\\microsoft.extensions.configuration.commandline.1.1.1.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.extensions.configuration.environmentvariables\\1.1.2\\microsoft.extensions.configuration.environmentvariables.1.1.2.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.extensions.configuration.fileextensions\\1.1.2\\microsoft.extensions.configuration.fileextensions.1.1.2.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.extensions.configuration.json\\1.1.2\\microsoft.extensions.configuration.json.1.1.2.nupkg.sha512",
@@ -232,12 +233,5 @@
     "C:\\Users\\PC\\.nuget\\packages\\system.xml.xpath\\4.0.1\\system.xml.xpath.4.0.1.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\system.xml.xpath.xdocument\\4.0.1\\system.xml.xpath.xdocument.4.0.1.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\PC\\Desktop\\last_proj\\git_project\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  "logs": []
 }

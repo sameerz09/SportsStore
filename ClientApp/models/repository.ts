@@ -166,7 +166,15 @@ order.clear();
 shipOrder(order: Order) {
 this.sendRequest(RequestMethod.Post, ordersUrl + "/" + order.orderId)
 .subscribe(r => this.getOrders())
-}
+    }
+
+    login(name: string, password: string): Observable<Response> {
+        return this.http.post("/api/account/login",
+            { name: name, password: password });
+    }
+    logout() {
+        this.http.post("/api/account/logout", null).subscribe(respone => { });
+    }
 
 
 

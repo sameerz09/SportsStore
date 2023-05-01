@@ -175,6 +175,12 @@ var Repository = /** @class */ (function () {
         this.sendRequest(http_1.RequestMethod.Post, ordersUrl + "/" + order.orderId)
             .subscribe(function (r) { return _this.getOrders(); });
     };
+    Repository.prototype.login = function (name, password) {
+        return this.http.post("/api/account/login", { name: name, password: password });
+    };
+    Repository.prototype.logout = function () {
+        this.http.post("/api/account/logout", null).subscribe(function (respone) { });
+    };
     Object.defineProperty(Repository.prototype, "filter", {
         get: function () {
             return this.filterObject;

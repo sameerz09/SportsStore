@@ -13,6 +13,9 @@ import { ProductSelectionComponent } from "./store/productSelection.component";
 import { AdminModule } from "./admin/admin.module";
 import { ErrorHandler } from "@angular/core";
 import { ErrorHandlerService } from "./errorHandler.service";
+import { AuthModule } from "./auth/auth.module";
+
+
 const eHandler = new ErrorHandlerService();
 export function handler() {
     return eHandler;
@@ -22,7 +25,7 @@ export function handler() {
 @NgModule({
     declarations: [AppComponent],
     imports: [BrowserModule, FormsModule, HttpModule, ModelModule,
-        RoutingConfig, StoreModule, AdminModule],
+        RoutingConfig, StoreModule, AdminModule, AuthModule],
     providers: [
 { provide: ErrorHandlerService, useFactory: handler},
 { provide: ErrorHandler, useFactory: handler}],

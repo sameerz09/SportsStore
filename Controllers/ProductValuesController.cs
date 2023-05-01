@@ -13,6 +13,7 @@ namespace SportsStore.Controllers
 {
     [Route("api/products")]
     [Authorize(Roles = "Administrator")]
+    [ValidateAntiForgeryToken]
     public class ProductValuesController : Controller
     {
         private DataContext context;

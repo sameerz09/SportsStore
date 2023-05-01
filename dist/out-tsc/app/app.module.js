@@ -20,6 +20,7 @@ var store_module_1 = require("./store/store.module");
 var admin_module_1 = require("./admin/admin.module");
 var core_2 = require("@angular/core");
 var errorHandler_service_1 = require("./errorHandler.service");
+var auth_module_1 = require("./auth/auth.module");
 var eHandler = new errorHandler_service_1.ErrorHandlerService();
 function handler() {
     return eHandler;
@@ -32,7 +33,7 @@ var AppModule = /** @class */ (function () {
         core_1.NgModule({
             declarations: [app_component_1.AppComponent],
             imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, http_1.HttpModule, model_module_1.ModelModule,
-                app_routing_1.RoutingConfig, store_module_1.StoreModule, admin_module_1.AdminModule],
+                app_routing_1.RoutingConfig, store_module_1.StoreModule, admin_module_1.AdminModule, auth_module_1.AuthModule],
             providers: [
                 { provide: errorHandler_service_1.ErrorHandlerService, useFactory: handler },
                 { provide: core_2.ErrorHandler, useFactory: handler }

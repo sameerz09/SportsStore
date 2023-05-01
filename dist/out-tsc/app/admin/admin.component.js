@@ -11,9 +11,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var repository_1 = require("../../models/repository");
+var authentication_service_1 = require("../auth/authentication.service");
 var AdminComponent = /** @class */ (function () {
-    function AdminComponent(repo) {
+    function AdminComponent(repo, authService) {
         this.repo = repo;
+        this.authService = authService;
         repo.filter.reset();
         repo.filter.related = true;
         repo.getProducts();
@@ -24,7 +26,8 @@ var AdminComponent = /** @class */ (function () {
         core_1.Component({
             templateUrl: "admin.component.html"
         }),
-        __metadata("design:paramtypes", [repository_1.Repository])
+        __metadata("design:paramtypes", [repository_1.Repository,
+            authentication_service_1.AuthenticationService])
     ], AdminComponent);
     return AdminComponent;
 }());

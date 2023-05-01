@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System;
+using System.Linq;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Linq;
+using System.Threading.Tasks;
+
 namespace SportsStore.Models
 {
     public static class IdentitySeedData
@@ -12,7 +14,7 @@ namespace SportsStore.Models
         private const string adminUser = "admin";
         private const string adminPassword = "MySecret123$";
         private const string adminRole = "Administrator";
-        public static async void SeedDatabase(IApplicationBuilder app)
+        public static async Task SeedDatabase(IApplicationBuilder app)
         {
             (GetAppService<IdentityDataContext>(app)).Database.Migrate();
             UserManager<IdentityUser> userManager
@@ -41,20 +43,21 @@ namespace SportsStore.Models
                     throw new Exception("Cannot create user: "
                     + result.Errors.FirstOrDefault());
                 }
-                if (!await userManager.IsInRoleAsync(user, adminRole))
+            }
+            if (!await userManager.IsInRoleAsync(user, adminRole))
+            {
+                IdentityResult result
+                = await userManager.AddToRoleAsync(user, adminRole);
+                if (!result.Succeeded)
                 {
-                    IdentityResult result
-                    = await userManager.AddToRoleAsync(user, adminRole);
-                    if (!result.Succeeded)
-                    {
-                        throw new Exception("Cannot add user to role: "
-                        + result.Errors.FirstOrDefault());
-                    }
+                    throw new Exception("Cannot add user to role: "
+                    + result.Errors.FirstOrDefault());
                 }
             }
-            private static T GetAppService<T>(IApplicationBuilder app)
-            {
-                return app.ApplicationServices.GetRequiredService<T>();
-            }
+        }
+        private static T GetAppService<T>(IApplicationBuilder app)
+        {
+            return app.ApplicationServices.GetRequiredService<T>();
         }
     }
+}
